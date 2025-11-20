@@ -42,6 +42,8 @@ public class WandBehaviour : MonoBehaviour
         if (other.CompareTag("Gem"))
         {
             other.gameObject.transform.parent = _gemSlot;
+            other.transform.position = Vector3.zero;
+            _elementGem = other.gameObject;
         }
     }
 }
