@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class DicePuzzle : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class DicePuzzle : MonoBehaviour
                 diceCountChecked = false;
                 return;
             }
-            diceCountChecked = true;
+            StartCoroutine(SetDiceCountCheckedAfterDelay(0.5f));
         }
 
         if (diceCountChecked && !puzzleComplete)
@@ -46,6 +47,19 @@ public class DicePuzzle : MonoBehaviour
             }
             counterText.text = diceCount.ToString();
         }
+
+        if (diceCount == 12 && !puzzleComplete)
+        {
+            puzzleComplete = true;
+            Debug.Log("Puzzle Complete!");
+            // Additional puzzle completion logic here
+        }
+    }
+
+    private IEnumerator SetDiceCountCheckedAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        diceCountChecked = true;
     }
 
     private int GetDiceValue(GameObject dice)
@@ -65,6 +79,6 @@ public class DicePuzzle : MonoBehaviour
         else if (Vector3.Dot(faceUp, Vector3.left) > 0.8f)
             return 4;
         else
-            return 0; // Error case
+            return 0;
     }
 }
