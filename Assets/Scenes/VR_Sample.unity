@@ -6977,6 +6977,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2903044766776854971, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
+      propertyPath: correctTag
+      value: Yellow
+      objectReference: {fileID: 0}
     - target: {fileID: 3920785012800864234, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.453
@@ -8979,31 +8983,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3920785012800864234, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999619
       objectReference: {fileID: 0}
     - target: {fileID: 3920785012800864234, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.0012172309
       objectReference: {fileID: 0}
     - target: {fileID: 3920785012800864234, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.008556183
       objectReference: {fileID: 0}
     - target: {fileID: 3920785012800864234, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.001218246
       objectReference: {fileID: 0}
     - target: {fileID: 3920785012800864234, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -0.141
       objectReference: {fileID: 0}
     - target: {fileID: 3920785012800864234, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 3920785012800864234, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -0.138
       objectReference: {fileID: 0}
     - target: {fileID: 4942875812952451813, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_Name
@@ -11108,6 +11112,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2903044766776854971, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
+      propertyPath: correctTag
+      value: Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 3920785012800864234, guid: 0c0f594572eb9ed4fa1d52bc47ad40c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2583608
