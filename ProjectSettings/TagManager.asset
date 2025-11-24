@@ -7,7 +7,7 @@ TagManager:
   - Red
   - Blue
   - Yellow
-  - Ball
+  - Dice
   layers:
   - Default
   - TransparentFX
