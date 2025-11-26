@@ -1,27 +1,29 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class RuneBehavuour : RuneSimonSays, IPointerDownHandler
+public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
 {
     public bool selected = false;
     private Renderer _renderer;
-
+    private RuneSimonSays _simonSays;
     private void Awake()
     {
+        _simonSays = GetComponentInParent<RuneSimonSays>();
         _renderer = GetComponent<Renderer>();
     }
 
-    public void OnPointerDownRune(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("click");
-        if (eventData.button == PointerEventData.InputButton.Left &&_selectedRunes.Contains(_renderer))
+        var max = Mathf.Max(_simonSays.selectedRunes.Count);
+        if (eventData.button == PointerEventData.InputButton.Left &&_simonSays.selectedRunes[max -1] == _renderer)
         {
             selected = true;
 
-        }else if (!_selectedRunes.Contains(_renderer))
+        }else if (!_simonSays.selectedRunes.Contains(_renderer))
         {
             selected=false;
-            _selectedRunes.Clear();
+            _simonSays.selectedRunes.Clear();
+            Debug.Log("failed");
         }
     }
 }

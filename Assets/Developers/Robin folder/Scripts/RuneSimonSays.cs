@@ -6,28 +6,29 @@ using System.Collections.Generic;
 
 public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 {
-    [SerializeField] private Renderer[] _runes;
-    protected List<Renderer> _selectedRunes;
+    [SerializeField] private List<Renderer> _runes;
+    public List<Renderer> selectedRunes = new List<Renderer>();
+    private List<Renderer> _originalRunes;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-       
+        _originalRunes = _runes;
     }
 
     private IEnumerator SimonSaysBehaviour()
     {
-        while (_selectedRunes.Count != 0 || _selectedRunes.Count < _runes.Length)
+        while (selectedRunes.Count < _runes.Count)
         {
-            int randomRune = Random.Range(0, _runes.Length);
+            int randomRune = Random.Range(0, _runes.Count);
             WaitForSeconds wait = new WaitForSeconds(2);
-            Debug.Log("start sequence");
             _runes[randomRune].material.color = Color.white;
-            _selectedRunes.Add(_runes[randomRune]);
+            selectedRunes.Add(_runes[randomRune]);
             yield return wait;
             _runes[randomRune].material.color = Color.green;
-            for (int i = 0; i < _selectedRunes.Count; i++)
-            yield return new WaitUntil(() => _selectedRunes[i].GetComponent<RuneBehavuour>().selected == true);
+            _runes.RemoveAt(randomRune);
+            for (int i = 0; i < selectedRunes.Count; i++)
+            yield return new WaitUntil(() => selectedRunes[i].GetComponent<RuneBehavuour>().selected == true);
         }
     }
 
@@ -35,6 +36,7 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
+            _runes = _originalRunes;
             StartCoroutine(SimonSaysBehaviour());
         }
     }
