@@ -14,14 +14,16 @@ public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        var max = Mathf.Max(_simonSays.selectedRunes.Count);
-        if (eventData.button == PointerEventData.InputButton.Left &&_simonSays.selectedRunes[max -1] == _renderer)
+        if (eventData.button == PointerEventData.InputButton.Left && _simonSays.selectedRunes.Contains(_renderer))
         {
+            _renderer.material.color = Color.white;
             selected = true;
 
-        }else if (!_simonSays.selectedRunes.Contains(_renderer))
+        }
+        
+        if (!_simonSays.selectedRunes.Contains(_renderer))
         {
-            selected=false;
+            StopCoroutine(_simonSays.SimonSaysBehaviour());
             _simonSays.selectedRunes.Clear();
             Debug.Log("failed");
         }
