@@ -6,6 +6,9 @@ public class ColorPuzzle : MonoBehaviour
     public Transform snapPoint;     // Where the cube should snap
     public float snapSpeed = 10f;   // Smooth snap speed
 
+    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private Collider _collider;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(correctTag))
@@ -55,4 +58,11 @@ public class ColorPuzzle : MonoBehaviour
         obj.position = snapPoint.position;
         obj.rotation = snapPoint.rotation;
     }
+
+    public void SetKinematic(bool isKinematic)
+    {
+        _rigidbody.isKinematic = isKinematic;
+        _collider.enabled = !isKinematic;
+    }
 }
+
