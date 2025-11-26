@@ -6,13 +6,13 @@ public class WandBehaviour : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] GameObject _elementGem;// change this to a gem script
-    [SerializeField] LayerMask _electricityLayer;
     [SerializeField] Transform _wandEndTrans;
     [SerializeField] Transform _gemSlot;
 
     [Header("References")]
     private RaycastHit _hit;
-   
+    [SerializeField] LayerMask _electricityLayer;
+
 
     private void Update()
     {
@@ -20,6 +20,7 @@ public class WandBehaviour : MonoBehaviour
     }
     public void ElementWandResponse(InputAction.CallbackContext context)
     {
+        //Checks the element gem slot, then executes that specific function. Easy to expand.
         if (context.performed)
         {
             switch (_elementGem.tag)// change this to the gem script 
