@@ -8,6 +8,7 @@ TagManager:
   - Blue
   - Yellow
   - Dice
+  - Weight
   layers:
   - Default
   - TransparentFX
