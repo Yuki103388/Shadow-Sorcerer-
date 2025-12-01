@@ -9,7 +9,6 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
     [SerializeField] private List<Renderer> _runes;
     public List<Renderer> selectedRunes = new List<Renderer>();
     private List<Renderer> _originalRunes = new List<Renderer>();
-
     private bool _gameOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,8 +19,9 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 
     public IEnumerator SimonSaysBehaviour()
     {
-        while (selectedRunes.Count <= _originalRunes.Count && _gameOver)
+        while (selectedRunes.Count <= _originalRunes.Count && !_gameOver)
         {
+            Debug.Log("nee");
             for (int i = 0; i < 3; i++)
             {
                 WaitForSeconds wait = new WaitForSeconds(1);
@@ -64,6 +64,7 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
     }
     private void RestartSimonSays()
     {
+        Debug.Log("ja");
         _runes.Clear();
         selectedRunes.Clear();
         _runes.AddRange(_originalRunes);

@@ -25,6 +25,7 @@ public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
         {
             StopCoroutine(_simonSays.SimonSaysBehaviour());
             _simonSays.selectedRunes.Clear();
+            _simonSays.GameOver();
             Debug.Log("failed");
         }
     }
