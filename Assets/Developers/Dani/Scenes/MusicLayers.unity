@@ -753,10 +753,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b4528c8c50f554eadecb48d6639664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainBGM: {fileID: 1522248022}
-  drums: {fileID: 0}
-  other: {fileID: 0}
-  clock: {fileID: 1522248019}
+  audioSources:
+  - {fileID: 1522248022}
+  - {fileID: 1522248021}
+  - {fileID: 1522248020}
+  - {fileID: 1522248019}
+  stages:
+  - timeStart: 20
+    fadeCalls:
+    - source: 0
+      duration: 2.4
+      targetVolume: 0
+    - source: 3
+      duration: 3.4
+      targetVolume: 1
+    speedCalls:
+    - duration: 3.4
+      newSpeed: 1.1
+  TESTTIME: 0
 --- !u!4 &1522248024
 Transform:
   m_ObjectHideFlags: 0

@@ -1,11 +1,41 @@
 using System.Collections;
-using Unity.VisualScripting;
+using UnityEditor.EditorTools;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class FadeTrackCall
+{
+    [Tooltip("Set to audiosources index")] public int source;
+    [Range(0, 5)] public float duration;
+    [Range(0, 2)] public float targetVolume;
+}
+
+[System.Serializable]
+public class ChangeSpeedCall
+{
+    [Range(0, 5)] public float duration;
+    [Range(0, 3)][Tooltip("0 is stopped, 2 is double speed. Also affects pitch")] public float newSpeed;
+}
+
+[System.Serializable]
+public class MusicStage
+{
+    public int timeStart;
+    public FadeTrackCall[] fadeCalls = new FadeTrackCall[0];
+    public ChangeSpeedCall[] speedCalls = new ChangeSpeedCall[0];
+}
 
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
-    public AudioSource mainBGM, drums, other, clock;
+    [Tooltip("First index must be the main bgm")] public AudioSource[] audioSources;
+    private int currentStage;
+    [SerializeField] public MusicStage[] stages;
+    public int TESTTIME;
+
+    [TextArea(8, 1000)]
+    public string developerNotes;
 
     private void Awake()
     {
@@ -16,20 +46,42 @@ public class MusicManager : MonoBehaviour
     [ContextMenu("Play")]
     public void Play()
     {
-        mainBGM.Play();
+        audioSources[0].Play();
     }
 
-    [ContextMenu("Stage One")]
-    public void StageOne()
+    void Update()
     {
-        StartCoroutine(FadeTrack(mainBGM, 4f, -1f, 0f));
-        StartCoroutine(FadeTrack(clock, 4f, -1f, 1f));
+        Timer();
+    }
+
+    //put in timer script later
+    public void Timer()
+    {
+        if (currentStage < stages.Length && TESTTIME >= stages[currentStage].timeStart)
+        {
+            NextStage();
+        }
+    }
+
+    public void NextStage()
+    {
+        Debug.Log("Activating music stage " + currentStage);
+        MusicStage stage = stages[currentStage];
+        foreach (var fadeCall in stage.fadeCalls)
+        {
+            StartCoroutine(FadeTrack(audioSources[fadeCall.source], fadeCall.duration, -1f, fadeCall.targetVolume));
+        }
+        foreach (var speedCall in stage.speedCalls)
+        {
+            StartCoroutine(ChangeSpeed(speedCall.duration, speedCall.newSpeed));
+        }
+        currentStage++;
     }
 
     //Fades track in or out. If startVolume is less than 0, it uses the current volume of the source.
     public IEnumerator FadeTrack(AudioSource source, float duration, float startVolume, float targetVolume)
     {
-        float timeStart = mainBGM.time;
+        float timeStart = audioSources[0].time;
         if (startVolume < 0f) startVolume = source.volume;
         source.Play();
         source.time = timeStart;
@@ -43,5 +95,25 @@ public class MusicManager : MonoBehaviour
         }
 
         source.volume = targetVolume;
+    }
+
+    public IEnumerator ChangeSpeed(float duration, float newSpeed)
+    {
+        float currentSpeed = audioSources[0].pitch;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float speed = Mathf.Lerp(currentSpeed, newSpeed, elapsed / duration);
+            for (int i = 0; i < audioSources.Length; i++)
+            {
+                audioSources[i].pitch = speed;
+            }
+            yield return null;
+        }
+
+        for (int i = 0; i < audioSources.Length; i++)
+            audioSources[i].pitch = newSpeed;
     }
 }
