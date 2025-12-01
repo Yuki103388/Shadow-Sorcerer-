@@ -24,9 +24,7 @@ public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
         if (!_simonSays.selectedRunes.Contains(_renderer))
         {
             StopCoroutine(_simonSays.SimonSaysBehaviour());
-            _simonSays.selectedRunes.Clear();
-            _simonSays.GameOver();
-            Debug.Log("failed");
+            _simonSays.gameOver = true;
         }
     }
 }
