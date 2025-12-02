@@ -1,30 +1,32 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static Unity.Collections.Unicode;
 
 public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
 {
     public bool selected = false;
     private Renderer _renderer;
     private RuneSimonSays _simonSays;
-    private int _simonSayIndex;
+    private RuneBehavuour _runeBehaviour;
+    public int _simonSayIndex;
 
     private void Awake()
     {
+        _runeBehaviour = GetComponent<RuneBehavuour>();
         _simonSays = GetComponentInParent<RuneSimonSays>();
         _renderer = GetComponent<Renderer>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left && _simonSays.selectedRunes[_simonSayIndex] == _renderer)
+        if (eventData.button == PointerEventData.InputButton.Left && _simonSays.selectedRunes[_simonSayIndex] == _runeBehaviour)
         {
-            for (int i = 0; i < _simonSays.selectedRunes.Count; i++)
+            for(int i =0;i< _simonSays.selectedRunes.Count; i++)
             {
-                
+                _simonSays.selectedRunes[i]._simonSayIndex++;
             }
-            _renderer.material.color = Color.white;
+            Selected();
             selected = true;
-            Debug.Log(_simonSays.selectedRunes[_simonSayIndex]);
         }else 
         {
             StopCoroutine(_simonSays.SimonSaysBehaviour());
