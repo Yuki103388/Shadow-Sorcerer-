@@ -41,9 +41,10 @@ public class DicePuzzle : MonoBehaviour
 
         for (int i = 0; i < diceRigidbodies.Length; i++)
         {
-            if (diceRigidbodies[i].linearVelocity.magnitude > 0.01f)
+            if (diceRigidbodies[i].linearVelocity.magnitude > 0.01f || diceRigidbodies[i].isKinematic == true)
             {
                 diceCountChecked = false;
+                counterText.text = "Rolling...";
                 return;
             }
             StartCoroutine(SetDiceCountCheckedAfterDelay(0.5f));

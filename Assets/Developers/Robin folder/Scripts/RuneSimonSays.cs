@@ -7,49 +7,54 @@ using UnityEngine.Rendering.Universal;
 
 public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 {
-    [SerializeField] private List<Renderer> _runes;
-    public List<Renderer> selectedRunes = new List<Renderer>();
-    private List<Renderer> _originalRunes = new List<Renderer>();
+    [SerializeField] private List<RuneBehavuour> _runes;
+    public List<RuneBehavuour> selectedRunes;
+    private List<int> excludedElements =new List<int>();
     public bool gameOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        _originalRunes.AddRange(_runes);
     }
+
+
 
     public IEnumerator SimonSaysBehaviour()
     {
-        while (selectedRunes.Count <= _originalRunes.Count && !gameOver)
+        while (selectedRunes.Count <= _runes.Count && !gameOver)
         {
             WaitForSeconds wait = new WaitForSeconds(1);
-            for (int i = 0; i < selectedRunes.Count; i++)
+            if (selectedRunes.Count >= 3)
             {
-                if (selectedRunes.Count <= 3)
+                for (int i = 0; i < selectedRunes.Count; i++)
                 {
-                    selectedRunes[i].material.color = Color.white;
+                    selectedRunes[i].Selected();
                     yield return wait;
                     ResetRune();
                 }
-                else
-                {
-                    yield return null;
-                }
             }
+            else
+            {
+                yield return null;
+            }
+            
             for (int i = 0; i < 3; i++)
             {
                 int randomRune = Random.Range(0, _runes.Count);
-                selectedRunes.Add(_runes[randomRune]);           
-                _runes[randomRune].material.color = Color.white;
-                yield return wait;
-                ResetRune();
-                _runes.RemoveAt(randomRune);
+                if (!excludedElements.Contains(randomRune))
+                {
+                    selectedRunes.Add(_runes[randomRune]);
+                    _runes[randomRune].Selected();
+                    yield return wait;
+                    ResetRune();
+                    excludedElements.Add(randomRune);
+                }
             }
             yield return new WaitUntil(() =>
             {
                 for (int i = 0; i < selectedRunes.Count; i++)
                 {
-                    if (!selectedRunes[i].GetComponent<RuneBehavuour>().selected)
+                    if (!selectedRunes[i].selected)
                     {
                        return false;           
                     }
@@ -59,20 +64,17 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
             ResetRune();
         }
     }
-    private void ResetRune()
+    public void ResetRune()
     {
         for (int j = 0; j < selectedRunes.Count; j++)
         {
-            selectedRunes[j].GetComponent<RuneBehavuour>().selected = false;
-            selectedRunes[j].material.color = Color.green;
+            selectedRunes[j].selected = false;
+            selectedRunes[j].Deselect();
         }
     }
     private void StartSimonSays()
     {
         gameOver = false;
-        _runes.Clear();
-        selectedRunes.Clear();
-        _runes.AddRange(_originalRunes);
         StartCoroutine(SimonSaysBehaviour());
     }
    public void OnPointerDown(PointerEventData eventData)
