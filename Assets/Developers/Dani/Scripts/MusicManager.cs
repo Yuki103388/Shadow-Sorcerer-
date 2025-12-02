@@ -30,9 +30,8 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
     [Tooltip("First index must be the main bgm")] public AudioSource[] audioSources;
-    private int currentStage;
+    public int currentStage;
     [SerializeField] public MusicStage[] stages;
-    public int TESTTIME;
 
     [TextArea(8, 1000)]
     public string developerNotes;
@@ -40,27 +39,12 @@ public class MusicManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     [ContextMenu("Play")]
     public void Play()
     {
         audioSources[0].Play();
-    }
-
-    void Update()
-    {
-        Timer();
-    }
-
-    //put in timer script later
-    public void Timer()
-    {
-        if (currentStage < stages.Length && TESTTIME >= stages[currentStage].timeStart)
-        {
-            NextStage();
-        }
     }
 
     public void NextStage()

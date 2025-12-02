@@ -5,12 +5,12 @@ public class Duplicatable : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Collider objectCollider;
-    public Duplicatable originalObject;
+    private Duplicatable originalObject;
     [Header("Settings")]
     [SerializeField] private int maxDuplicates;
     [Tooltip("The multiplier of the distance the new object is placed from the original. 2 is next to original")]
     [SerializeField] private float duplicateHeightMultiplier = 2f;
-    public int currentDuplicates;
+    private int currentDuplicates;
     public UnityEvent onDuplicate;
 
     [ContextMenu("Duplicate")]
@@ -22,6 +22,7 @@ public class Duplicatable : MonoBehaviour
         }
         else if (!originalObject.CanDuplicate()) return;
 
+        // Sets the new object's position above the original based on its collider size
         Duplicatable Newobject = Instantiate(gameObject, transform.position + (objectCollider.bounds.extents.y * Vector3.up * duplicateHeightMultiplier), transform.rotation).GetComponent<Duplicatable>();
         onDuplicate.Invoke();
         if (originalObject == null)
