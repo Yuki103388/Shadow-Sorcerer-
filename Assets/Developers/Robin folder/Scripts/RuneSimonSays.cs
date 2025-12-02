@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
+using Meta.WitAi;
 
 public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 {
     [SerializeField] private List<RuneBehavuour> _runes;
     public List<RuneBehavuour> selectedRunes;
-    private List<int> excludedElements =new List<int>();
+    [SerializeField ]private List<int> excludedElements =new List<int>();
     public bool gameOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,18 +38,23 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
             {
                 yield return null;
             }
-            
-            for (int i = 0; i < 3; i++)
+
+            for (int i = 0; i < 3;)
             {
-                int randomRune = Random.Range(0, _runes.Count);
-                if (!excludedElements.Contains(randomRune))
-                {
-                    selectedRunes.Add(_runes[randomRune]);
-                    _runes[randomRune].Selected();
-                    yield return wait;
-                    ResetRune();
-                    excludedElements.Add(randomRune);
-                }
+               int randomRune = Random.Range(0, _runes.Count);
+               if (excludedElements.Contains(randomRune))
+               {
+                   randomRune= Random.Range(0, _runes.Count);
+               }
+               else 
+               {
+                   selectedRunes.Add(_runes[randomRune]);
+                   _runes[randomRune].Selected();
+                   yield return new WaitForSeconds(1);
+                   ResetRune();
+                   excludedElements.Add(randomRune);
+                   i++;
+               }
             }
             yield return new WaitUntil(() =>
             {
@@ -70,11 +76,13 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
         {
             selectedRunes[j].selected = false;
             selectedRunes[j].Deselect();
+            selectedRunes[j]._simonSayIndex = 0;
         }
     }
     private void StartSimonSays()
     {
         gameOver = false;
+        excludedElements.Clear();
         StartCoroutine(SimonSaysBehaviour());
     }
    public void OnPointerDown(PointerEventData eventData)
