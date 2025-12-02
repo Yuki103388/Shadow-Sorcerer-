@@ -7,17 +7,19 @@ public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
     public bool selected = false;
     private Renderer _renderer;
     private RuneSimonSays _simonSays;
+    private RuneBehavuour _runeBehaviour;
     public int _simonSayIndex;
 
     private void Awake()
     {
+        _runeBehaviour = GetComponent<RuneBehavuour>();
         _simonSays = GetComponentInParent<RuneSimonSays>();
         _renderer = GetComponent<Renderer>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left && _simonSays.selectedRunes[_simonSayIndex])
+        if (eventData.button == PointerEventData.InputButton.Left && _simonSays.selectedRunes[_simonSayIndex] == _runeBehaviour)
         {
             for(int i =0;i< _simonSays.selectedRunes.Count; i++)
             {

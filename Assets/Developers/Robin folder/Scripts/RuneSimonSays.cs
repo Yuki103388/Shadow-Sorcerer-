@@ -10,16 +10,12 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 {
     [SerializeField] private List<RuneBehavuour> _runes;
     public List<RuneBehavuour> selectedRunes;
-    [SerializeField ]private List<int> excludedElements =new List<int>();
+    private List<int> excludedElements =new List<int>();
+
     public bool gameOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
-    {
-    }
-
-
-
+ 
     public IEnumerator SimonSaysBehaviour()
     {
         while (selectedRunes.Count <= _runes.Count && !gameOver)
