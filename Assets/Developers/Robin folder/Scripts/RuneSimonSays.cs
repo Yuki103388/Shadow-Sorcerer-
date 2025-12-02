@@ -8,17 +8,27 @@ using Meta.WitAi;
 
 public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 {
+    [Header("References")]
     [SerializeField] private List<RuneBehavuour> _runes;
     public List<RuneBehavuour> selectedRunes;
     private List<int> excludedElements =new List<int>();
 
+    [Header("variables")]
     public bool gameOver = false;
 
+    [Header("Components")]
+    private Renderer _renderer;
+
+    private void Awake()
+    {
+        _renderer = GetComponent<Renderer>();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
- 
+
     public IEnumerator SimonSaysBehaviour()
     {
-        while (selectedRunes.Count <= _runes.Count && !gameOver)
+        while (!gameOver && selectedRunes.Count <= _runes.Count )
         {
             WaitForSeconds wait = new WaitForSeconds(1);
             if (selectedRunes.Count >= 3)
@@ -46,7 +56,7 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
                {
                    selectedRunes.Add(_runes[randomRune]);
                    _runes[randomRune].Selected();
-                   yield return new WaitForSeconds(1);
+                   yield return wait;
                    ResetRune();
                    excludedElements.Add(randomRune);
                    i++;
@@ -63,6 +73,12 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
                 }
                   return true;
             });
+            if (!gameOver)
+            {
+                _renderer.material.color = Color.green;
+                yield return new WaitForSeconds(3);
+                _renderer.material.color = Color.gray;
+            }
             ResetRune();
         }
     }
@@ -79,6 +95,7 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
     {
         gameOver = false;
         excludedElements.Clear();
+        _renderer.material.color = Color.gray;
         StartCoroutine(SimonSaysBehaviour());
     }
    public void OnPointerDown(PointerEventData eventData)
