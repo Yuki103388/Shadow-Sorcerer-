@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: player_hand_right
       objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 6d5b9c2b777e1b64f8a2561321cfcd99, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 6d5b9c2b777e1b64f8a2561321cfcd99, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
