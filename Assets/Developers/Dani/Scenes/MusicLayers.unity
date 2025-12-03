@@ -817,7 +817,16 @@ MonoBehaviour:
     speedCalls:
     - duration: 3.4
       newSpeed: 1.1
-  developerNotes: 
+  developerNotes: 'All stages need to be in order from first to last.
+
+    Main BGM
+    must be element 0.
+
+    The timeStart is the time remaining in seconds when the
+    stage should start.
+
+    Example: If you want a stage to start at 2 minutes remaining,
+    set timeStart to 120.'
 --- !u!4 &1522248024
 Transform:
   m_ObjectHideFlags: 0
