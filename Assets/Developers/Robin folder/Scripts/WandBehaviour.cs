@@ -6,11 +6,12 @@ using UnityEngine.InputSystem;
 public class WandBehaviour : MonoBehaviour
 {
     [Header("References")]
-    private Crystal crystal;
+    [SerializeField] private WandProjectile[] wandProjectiles;
     [SerializeField] Transform wandEndTrans;
     [SerializeField] Transform gemSlot;
-    private RaycastHit hit;
     [SerializeField] LayerMask electricityLayer;
+    private Crystal crystal;
+    private RaycastHit hit;
 
 
     [Header("Settings")]
@@ -19,6 +20,7 @@ public class WandBehaviour : MonoBehaviour
     [SerializeField] private float latestHighestVelocity;
     private Vector3 lastPos;
     private Coroutine resetVelocityCoroutine;
+    private int projectileIndex;
 
     private void Start()
     {
@@ -49,7 +51,7 @@ public class WandBehaviour : MonoBehaviour
     public void ElementWandResponse(InputAction.CallbackContext context)
     {
         //Checks the element gem slot, then executes that specific function. Easy to expand.
-        if (context.performed && latestHighestVelocity >= velocityRequiredToCast)
+        if (context.performed && crystal != null && latestHighestVelocity >= velocityRequiredToCast)
         {
             if (crystal.isProjectile)
             {
@@ -62,9 +64,15 @@ public class WandBehaviour : MonoBehaviour
         }
     }
 
+    [ContextMenu("Fire Projectile")]
     private void FireProjectile()
     {
-
+        WandProjectile projectile = wandProjectiles[projectileIndex];
+        projectile.Initialize(crystal.elementType, crystal.explosionRadius);
+        projectile.gameObject.SetActive(true);
+        projectile.transform.position = wandEndTrans.position;
+        projectile.LaunchProjectile(wandEndTrans.transform.up * crystal.projectileSpeed);
+        projectileIndex = (projectileIndex + 1) % wandProjectiles.Length;
     }
 
     private void FireRaycast()
@@ -76,10 +84,11 @@ public class WandBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Gem"))
+        if (other.GetComponent<Crystal>() != null)
         {
             other.gameObject.transform.parent = gemSlot;
-            other.transform.position = Vector3.zero;
+            other.transform.position = gemSlot.position;
+            other.GetComponent<Rigidbody>().isKinematic = true;
             crystal = other.GetComponent<Crystal>();
         }
     }
