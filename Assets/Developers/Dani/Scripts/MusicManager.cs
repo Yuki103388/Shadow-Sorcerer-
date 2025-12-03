@@ -34,7 +34,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] public MusicStage[] stages;
 
     [TextArea(8, 1000)]
-    public string developerNotes;
+    public string developerNotes = "All stages need to be in order from first to last. \n The timeStart is the time remaining in seconds when the stage should start. \n Example: If you want a stage to start at 2 minutes remaining, set timeStart to 120.";
 
     private void Awake()
     {
