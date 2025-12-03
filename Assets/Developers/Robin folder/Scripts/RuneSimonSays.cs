@@ -4,24 +4,32 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
+using Meta.WitAi;
 
 public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 {
+    [Header("References")]
     [SerializeField] private List<RuneBehavuour> _runes;
     public List<RuneBehavuour> selectedRunes;
     private List<int> excludedElements =new List<int>();
-    public bool gameOver = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    [Header("variables")]
+    public bool gameOver = false;
+    private bool sequence = false;
+
+    [Header("Components")]
+    private Renderer _renderer;
+
+    private void Awake()
     {
+        _renderer = GetComponent<Renderer>();
     }
 
-
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public IEnumerator SimonSaysBehaviour()
     {
-        while (selectedRunes.Count <= _runes.Count && !gameOver)
+        while (!gameOver && selectedRunes.Count <= _runes.Count )
         {
             WaitForSeconds wait = new WaitForSeconds(1);
             if (selectedRunes.Count >= 3)
@@ -37,18 +45,23 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
             {
                 yield return null;
             }
-            
-            for (int i = 0; i < 3; i++)
+
+            for (int i = 0; i < 3;)
             {
-                int randomRune = Random.Range(0, _runes.Count);
-                if (!excludedElements.Contains(randomRune))
-                {
-                    selectedRunes.Add(_runes[randomRune]);
-                    _runes[randomRune].Selected();
-                    yield return wait;
-                    ResetRune();
-                    excludedElements.Add(randomRune);
-                }
+               int randomRune = Random.Range(0, _runes.Count);
+               if (excludedElements.Contains(randomRune))
+               {
+                   randomRune= Random.Range(0, _runes.Count);
+               }
+               else 
+               {
+                   selectedRunes.Add(_runes[randomRune]);
+                   _runes[randomRune].Selected();
+                   yield return wait;
+                   ResetRune();
+                   excludedElements.Add(randomRune);
+                   i++;
+               }
             }
             yield return new WaitUntil(() =>
             {
@@ -62,7 +75,23 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
                   return true;
             });
             ResetRune();
+            if (!gameOver)
+            {
+                _renderer.material.color = Color.green;
+                yield return new WaitForSeconds(2);
+                _renderer.material.color = Color.blue;
+            }
         }
+    }
+    public IEnumerator GameOver()
+    {
+        gameOver = true;
+        ResetRune();
+        selectedRunes.Clear();
+        _renderer.material.color = Color.red;
+        yield return new WaitForSeconds(2);
+        _renderer.material.color = Color.gray;
+        sequence = false;
     }
     public void ResetRune()
     {
@@ -70,18 +99,32 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
         {
             selectedRunes[j].selected = false;
             selectedRunes[j].Deselect();
+            selectedRunes[j]._simonSayIndex = 0;
         }
     }
     private void StartSimonSays()
     {
-        gameOver = false;
-        StartCoroutine(SimonSaysBehaviour());
+        if (!sequence)
+        {
+            gameOver = false;
+            excludedElements.Clear();
+            StartCoroutine(SimonSaysBehaviour());
+            _renderer.material.color = Color.blue;
+            sequence = true;
+        }
     }
    public void OnPointerDown(PointerEventData eventData)
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
             StartSimonSays();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch(other.tag) {
+            case "Hand": StartSimonSays(); break;
         }
     }
 }

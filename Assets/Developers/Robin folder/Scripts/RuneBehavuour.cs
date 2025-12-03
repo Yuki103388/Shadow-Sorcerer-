@@ -1,36 +1,47 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static Unity.Collections.Unicode;
 
 public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
 {
-    public bool selected = false;
+    [Header("Components")]
     private Renderer _renderer;
     private RuneSimonSays _simonSays;
-    private int _simonSayIndex;
+    private RuneBehavuour _runeBehaviour;
+    [Header("variables")]
+    public bool selected = false;
+    public int _simonSayIndex;
 
     private void Awake()
     {
+        _runeBehaviour = GetComponent<RuneBehavuour>();
         _simonSays = GetComponentInParent<RuneSimonSays>();
         _renderer = GetComponent<Renderer>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
+    { 
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            OnRuneSelectedBehaviour();
+        }   
+    }
+
+    private void OnRuneSelectedBehaviour()
     {
-        if (eventData.button == PointerEventData.InputButton.Left && _simonSays.selectedRunes[_simonSayIndex] == _renderer)
+        // checks if the selected rune is the next one in the sequence and updates the index to be the one after in the sequence, if thats not the case reset all the runes
+        if (_simonSays.selectedRunes[_simonSayIndex] == _runeBehaviour && !_simonSays.gameOver)
         {
             for (int i = 0; i < _simonSays.selectedRunes.Count; i++)
             {
-                
+                _simonSays.selectedRunes[i]._simonSayIndex++;
             }
-            _renderer.material.color = Color.white;
+            Selected();
             selected = true;
-            Debug.Log(_simonSays.selectedRunes[_simonSayIndex]);
-        }else 
+        }
+        else
         {
-            StopCoroutine(_simonSays.SimonSaysBehaviour());
-            _simonSays.ResetRune();
-            _simonSays.selectedRunes.Clear();
-            _simonSays.gameOver = true;
+            StartCoroutine(_simonSays.GameOver());
         }
     }
 
@@ -41,6 +52,13 @@ public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
     public void Deselect()
     {
         _renderer.material.color = Color.green;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch(other.tag) {
+            case "Hand": OnRuneSelectedBehaviour(); break;
+        }
     }
 
 }
