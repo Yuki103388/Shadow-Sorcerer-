@@ -15,6 +15,7 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 
     [Header("variables")]
     public bool gameOver = false;
+    private bool sequence = false;
 
     [Header("Components")]
     private Renderer _renderer;
@@ -73,14 +74,24 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
                 }
                   return true;
             });
+            ResetRune();
             if (!gameOver)
             {
                 _renderer.material.color = Color.green;
-                yield return new WaitForSeconds(3);
-                _renderer.material.color = Color.gray;
+                yield return new WaitForSeconds(2);
+                _renderer.material.color = Color.blue;
             }
-            ResetRune();
         }
+    }
+    public IEnumerator GameOver()
+    {
+        gameOver = true;
+        ResetRune();
+        selectedRunes.Clear();
+        _renderer.material.color = Color.red;
+        yield return new WaitForSeconds(2);
+        _renderer.material.color = Color.gray;
+        sequence = false;
     }
     public void ResetRune()
     {
@@ -93,16 +104,27 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
     }
     private void StartSimonSays()
     {
-        gameOver = false;
-        excludedElements.Clear();
-        _renderer.material.color = Color.gray;
-        StartCoroutine(SimonSaysBehaviour());
+        if (!sequence)
+        {
+            gameOver = false;
+            excludedElements.Clear();
+            StartCoroutine(SimonSaysBehaviour());
+            _renderer.material.color = Color.blue;
+            sequence = true;
+        }
     }
    public void OnPointerDown(PointerEventData eventData)
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
             StartSimonSays();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch(other.tag) {
+            case "Hand": StartSimonSays(); break;
         }
     }
 }
