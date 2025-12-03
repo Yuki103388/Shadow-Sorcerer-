@@ -29,17 +29,52 @@ public class WandProjectile : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.name == "Wand") return;
+        Debug.Log("Hit " + other.gameObject.name);
+        if (other.gameObject.name == "Wand" || other.gameObject.GetComponent<Crystal>() != null) return;
 
         // if (other.GetComponent<receivingscript>() != null)
         // {
         //     other.GetComponent<receivingscript>().ReceiveHit();
         // }
 
-        Physics.SphereCastAll(transform.position, explosionRadius, Vector3.zero);
+        Explode();
+
+
         gameObject.SetActive(false);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+
+    }
+
+
+    private void Explode()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        Debug.Log("Projectile Exploded with " + hitColliders.Length + " hits.");
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            GameObject hitGameObject = hitColliders[i].gameObject;
+            Vector3 hitDirection = hitGameObject.transform.position - transform.position;
+            float hitDistance = Vector3.Distance(transform.position, hitGameObject.transform.position) / explosionRadius;
+
+
+            // knock and move objects away if they have a rigidbody for fun :3
+            if ((hitGameObject.gameObject.GetComponent<Rigidbody>() != null)
+            && !hitGameObject.gameObject.GetComponent<Rigidbody>().isKinematic)
+            {
+                hitGameObject.gameObject.GetComponent<Rigidbody>().AddForce(hitDirection.normalized * 20 / (hitDistance + 0.5f), ForceMode.Force);
+            }
+
+            if (hitGameObject.GetComponent<ElementalInteractor>() != null)
+            {
+                hitGameObject.GetComponent<ElementalInteractor>().ElementHit(elementType);
+            }
+
+        }
     }
 
     public void LaunchProjectile(Vector3 velocity)
