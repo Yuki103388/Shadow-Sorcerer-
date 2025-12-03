@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 5181283144552797407}
   - component: {fileID: 8827181657077827300}
   m_Layer: 0
-  m_Name: rune circle wall
+  m_Name: Simon says
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
