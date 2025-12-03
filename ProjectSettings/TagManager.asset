@@ -9,6 +9,9 @@ TagManager:
   - Yellow
   - Dice
   - Weight
+  - Hand
+  - Electricity
+  - Rune
   layers:
   - Default
   - TransparentFX
