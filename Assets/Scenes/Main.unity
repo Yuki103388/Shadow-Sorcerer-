@@ -4270,7 +4270,12 @@ PrefabInstance:
       propertyPath: _ovrCameraRig
       value: 
       objectReference: {fileID: 242545651}
-    m_RemovedComponents: []
+    - target: {fileID: 7245423369569572801, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: _tunneling
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2336446269904782542, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
