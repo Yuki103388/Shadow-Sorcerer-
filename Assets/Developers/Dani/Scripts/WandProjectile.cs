@@ -8,6 +8,7 @@ public class WandProjectile : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private float lifeTime = 5f;
+    [SerializeField] private int explosionForce = 10;
     private ElementType elementType;
     private float explosionRadius;
 
@@ -61,12 +62,11 @@ public class WandProjectile : MonoBehaviour
             Vector3 hitDirection = hitGameObject.transform.position - transform.position;
             float hitDistance = Vector3.Distance(transform.position, hitGameObject.transform.position) / explosionRadius;
 
-
             // knock and move objects away if they have a rigidbody for fun :3
             if ((hitGameObject.gameObject.GetComponent<Rigidbody>() != null)
             && !hitGameObject.gameObject.GetComponent<Rigidbody>().isKinematic)
             {
-                hitGameObject.gameObject.GetComponent<Rigidbody>().AddForce(hitDirection.normalized * 20 / (hitDistance + 0.5f), ForceMode.Force);
+                hitGameObject.gameObject.GetComponent<Rigidbody>().AddForce(hitDirection.normalized * explosionForce / (hitDistance + 0.5f), ForceMode.Impulse);
             }
 
             if (hitGameObject.GetComponent<ElementalInteractor>() != null)
