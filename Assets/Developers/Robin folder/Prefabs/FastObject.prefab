@@ -155,13 +155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9257c8796bf44408b7f8ef10c3bca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementNeeded: 1
+  elementNeeded: 3
   OnCorrectElement:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4590879738370204987}
         m_TargetAssemblyTypeName: FastObjectBehaviour, Assembly-CSharp
-        m_MethodName: StopFastObject
+        m_MethodName: FreezeObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -184,7 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 20
-  canMove: 1
 --- !u!54 &9127410285969069023
 Rigidbody:
   m_ObjectHideFlags: 0
