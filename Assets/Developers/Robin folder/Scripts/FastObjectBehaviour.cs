@@ -22,6 +22,7 @@ public class FastObjectBehaviour : MonoBehaviour
         Movement(canMove);
     }
 
+    // moves the object forwards multiplied by the speed var
     private void Movement(bool moving)
     {
         if (moving)
@@ -30,6 +31,7 @@ public class FastObjectBehaviour : MonoBehaviour
         }
     }
 
+    // if it hits a will flips the forward direction to the opposite side
     private void FlipDirection()
     {
         if (transform.position.z > 0)
@@ -42,6 +44,7 @@ public class FastObjectBehaviour : MonoBehaviour
         }
     }
 
+    // stops the object and freezes it, sets the required element to be fire to set it free
     public void FreezeObject()
     {
         canMove = false;
@@ -49,9 +52,12 @@ public class FastObjectBehaviour : MonoBehaviour
         _interactor.OnCorrectElement.AddListener(UnFreezeObject);
     }
 
+    // makes the object fall and unfreeze it and makes it uninteractable for the wand
     private void UnFreezeObject()
     {
         _rb.isKinematic = false;
+        _interactor.elementNeeded = ElementType.None;
+        _interactor.OnCorrectElement = null;
     }
 
     private void OnTriggerEnter(Collider other)
