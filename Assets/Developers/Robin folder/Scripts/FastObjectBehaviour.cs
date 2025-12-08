@@ -3,23 +3,31 @@ using UnityEngine;
 
 public class FastObjectBehaviour : MonoBehaviour
 {
+    [Header("Components")]
     private Rigidbody _rb;
+    private ElementalInteractor _interactor;
+    [Header("variables")]
     [SerializeField] private int _speed;
+    private bool canMove = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _interactor = GetComponent<ElementalInteractor>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        Movement(canMove);
     }
 
-    private void Movement()
+    private void Movement(bool moving)
     {
-        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        if (moving)
+        {
+            transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        }
     }
 
     private void FlipDirection()
@@ -32,6 +40,18 @@ public class FastObjectBehaviour : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+    }
+
+    public void FreezeObject()
+    {
+        canMove = false;
+        _interactor.elementNeeded = ElementType.Fire;
+        _interactor.OnCorrectElement.AddListener(UnFreezeObject);
+    }
+
+    private void UnFreezeObject()
+    {
+        _rb.isKinematic = false;
     }
 
     private void OnTriggerEnter(Collider other)
