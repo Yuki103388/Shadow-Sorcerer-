@@ -45,7 +45,13 @@ public class FastObjectBehaviour : MonoBehaviour
     public void FreezeObject()
     {
         canMove = false;
-        _interactor.elementNeeded = ElementType.Electric;
+        _interactor.elementNeeded = ElementType.Fire;
+        _interactor.OnCorrectElement.AddListener(UnFreezeObject);
+    }
+
+    private void UnFreezeObject()
+    {
+        _rb.isKinematic = false;
     }
 
     private void OnTriggerEnter(Collider other)
