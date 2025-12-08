@@ -5236,6 +5236,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 312051811564439535, guid: a5c74c0a876008d4a80889a7b45a024d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 1427458482608122674, guid: a5c74c0a876008d4a80889a7b45a024d, type: 3}
       propertyPath: m_Name
       value: Return
