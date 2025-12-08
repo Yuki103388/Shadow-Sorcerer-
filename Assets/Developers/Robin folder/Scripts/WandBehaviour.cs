@@ -11,6 +11,7 @@ public class WandBehaviour : MonoBehaviour
     [SerializeField] Transform wandEndTrans;
     [SerializeField] Transform gemSlot;
     // [SerializeField] LayerMask electricityLayer;
+    public static WandBehaviour instance;
     private Crystal crystal;
     private RaycastHit hit;
 
@@ -24,6 +25,12 @@ public class WandBehaviour : MonoBehaviour
     private Coroutine resetVelocityCoroutine;
     private Coroutine lineRendererCoroutine;
     private int projectileIndex;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     private void Start()
     {
