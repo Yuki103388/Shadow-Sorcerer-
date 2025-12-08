@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class FastObjectBehaviour : MonoBehaviour
 {
+    [Header("Components")]
     private Rigidbody _rb;
+    [Header("variables")]
     [SerializeField] private int _speed;
+    private bool canMove = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -14,12 +17,15 @@ public class FastObjectBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        Movement(canMove);
     }
 
-    private void Movement()
+    private void Movement(bool moving)
     {
-        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        if (moving)
+        {
+            transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        }
     }
 
     private void FlipDirection()
@@ -32,6 +38,12 @@ public class FastObjectBehaviour : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+    }
+
+    public void StopFastObject()
+    {
+        canMove = false;
+        _rb.isKinematic = false;
     }
 
     private void OnTriggerEnter(Collider other)
