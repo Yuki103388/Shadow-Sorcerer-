@@ -538,6 +538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6934952877588087513}
   - component: {fileID: 6731135690092309089}
+  - component: {fileID: -5987909770618217361}
   - component: {fileID: 953926735124305688}
   m_Layer: 0
   m_Name: Dice
@@ -584,6 +585,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c66940b959e32b4fae7ec3cfee49cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5987909770618217361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933770883483818370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aebe0ff594727e4c9e3ed603d5eb79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectCollider: {fileID: 2359738176802471634}
+  originalObject: {fileID: -5987909770618217361}
+  maxDuplicates: 1
+  duplicateHeightMultiplier: 2
+  currentDuplicates: 0
+  onDuplicate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &953926735124305688
 Rigidbody:
   m_ObjectHideFlags: 0
