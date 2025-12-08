@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class ElementalInteractor : MonoBehaviour
 {
-    [SerializeField] private ElementType elementNeeded;
+    public ElementType elementNeeded;
     public UnityEvent OnCorrectElement;
 
     public void ElementHit(ElementType hitType)

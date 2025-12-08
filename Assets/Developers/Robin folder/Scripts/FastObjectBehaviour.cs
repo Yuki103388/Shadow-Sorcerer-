@@ -5,6 +5,7 @@ public class FastObjectBehaviour : MonoBehaviour
 {
     [Header("Components")]
     private Rigidbody _rb;
+    private ElementalInteractor _interactor;
     [Header("variables")]
     [SerializeField] private int _speed;
     private bool canMove = true;
@@ -12,6 +13,7 @@ public class FastObjectBehaviour : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _interactor = GetComponent<ElementalInteractor>();
     }
 
     // Update is called once per frame
@@ -40,10 +42,10 @@ public class FastObjectBehaviour : MonoBehaviour
         }
     }
 
-    public void StopFastObject()
+    public void FreezeObject()
     {
         canMove = false;
-        _rb.isKinematic = false;
+        _interactor.elementNeeded = ElementType.Electric;
     }
 
     private void OnTriggerEnter(Collider other)
