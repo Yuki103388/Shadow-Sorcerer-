@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SlotPuzzle : MonoBehaviour
 {
     [SerializeField] private List<PuzzleSlot> puzzleSlots = new List<PuzzleSlot>(); //Automatically assigned. Put slots as children of this object
     [Header("Settings")]
     private int puzzlesCollected;
+    public UnityEvent OnPuzzleCompleted;
 
     //Stores PuzzleSlot children and gives them their IDS
     private void Awake()
@@ -18,7 +20,7 @@ public class SlotPuzzle : MonoBehaviour
         puzzlesCollected++;
         if (puzzlesCollected >= puzzleSlots.Count)
         {
-            Debug.Log("Puzzle Completed!");
+            OnPuzzleCompleted.Invoke();
         }
     }
 
