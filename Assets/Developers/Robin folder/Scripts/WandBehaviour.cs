@@ -8,6 +8,7 @@ public class WandBehaviour : MonoBehaviour
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private WandProjectile[] wandProjectiles;
+    [SerializeField] private Animator wandAnimator;
     [SerializeField] Transform wandEndTrans;
     [SerializeField] Transform gemSlot;
     // [SerializeField] LayerMask electricityLayer;
@@ -120,6 +121,16 @@ public class WandBehaviour : MonoBehaviour
             {
                 lineRenderer.material = crystal.lineRendererMaterial;
             }
+        }
+    }
+
+    public void RemoveCrystal()
+    {
+        if (crystal != null)
+        {
+            crystal.gameObject.transform.parent = null;
+            crystal.GetComponent<Rigidbody>().isKinematic = false;
+            crystal = null;
         }
     }
 }
