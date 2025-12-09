@@ -9,7 +9,7 @@ public class SlotPuzzle : MonoBehaviour
     private int puzzlesCollected;
     public UnityEvent OnPuzzleCompleted;
 
-    //Stores PuzzleSlot children and gives them their IDS
+    //Stores PuzzleSlot children
     private void Awake()
     {
         puzzleSlots.AddRange(transform.GetComponentsInChildren<PuzzleSlot>());

@@ -9,9 +9,7 @@ public class ElementalInteractor : MonoBehaviour
     public void ElementHit(ElementType hitType)
     {
         if (hitType == elementNeeded)
-        {
             OnCorrectElement.Invoke();
-        }
     }
 
     public void SetElementNeeded(ElementType newElement)
