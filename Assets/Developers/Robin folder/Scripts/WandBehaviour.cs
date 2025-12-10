@@ -8,7 +8,6 @@ public class WandBehaviour : MonoBehaviour
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private WandProjectile[] wandProjectiles;
-    [SerializeField] private Animator wandAnimator;
     [SerializeField] Transform wandEndTrans;
     [SerializeField] Transform gemSlot;
     // [SerializeField] LayerMask electricityLayer;
@@ -17,7 +16,7 @@ public class WandBehaviour : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private float velocityRequiredToCast;
-    [SerializeField] private float timeWindowToCheckVelocity = 0.2f;
+    [SerializeField] private float velocityWindow = 0.2f;
     [SerializeField] private float lineRendererDuration = 0.5f;
     private float latestHighestVelocity;
     private Vector3 lastPos;
@@ -58,7 +57,7 @@ public class WandBehaviour : MonoBehaviour
 
     private IEnumerator ResetVelocityCheck()
     {
-        yield return new WaitForSeconds(timeWindowToCheckVelocity);
+        yield return new WaitForSeconds(velocityWindow);
         latestHighestVelocity = 0f;
     }
 
