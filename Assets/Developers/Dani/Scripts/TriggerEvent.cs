@@ -8,13 +8,13 @@ public class TriggerEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Crystal>() != null)
+        if (other.gameObject.CompareTag("Hand"))
             OnCrystalEnter.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Crystal>() != null)
+        if (other.gameObject.CompareTag("Hand"))
             OnCrystalExit.Invoke();
     }
 }
