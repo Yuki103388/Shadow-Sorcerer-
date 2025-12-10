@@ -8,23 +8,26 @@ public class WandBehaviour : MonoBehaviour
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private WandProjectile[] wandProjectiles;
-    [SerializeField] Transform wandEndTrans;
-    [SerializeField] Transform gemSlot;
-    // [SerializeField] LayerMask electricityLayer;
+    [SerializeField] private Transform wandEndTrans;
+    [SerializeField] private Transform gemSlot;
+
     public static WandBehaviour instance;
+
     private Crystal crystal;
     private RaycastHit hit;
 
-
     [Header("Settings")]
-    [SerializeField] private float velocityRequiredToCast;
+    [SerializeField] private float velocityRequiredToCast = 2f;
     [SerializeField] private float timeWindowToCheckVelocity = 0.2f;
-    [SerializeField] private float latestHighestVelocity;
     [SerializeField] private float lineRendererDuration = 0.5f;
+    [SerializeField] private float castCooldown = 0.25f;
+
+    private float latestHighestVelocity;
     private Vector3 lastPos;
     private Coroutine resetVelocityCoroutine;
     private Coroutine lineRendererCoroutine;
-    private int projectileIndex;
+    private bool canCast = true;
+    private int projectileIndex = 0;
 
     private void Awake()
     {
@@ -35,22 +38,32 @@ public class WandBehaviour : MonoBehaviour
     private void Start()
     {
         lastPos = transform.position;
-    }
 
-    private void Update()
-    {
-        lineRenderer.SetPosition(0, wandEndTrans.position);
+        if (lineRenderer != null)
+        {
+            lineRenderer.enabled = false;
+            lineRenderer.positionCount = 2;
+        }
     }
 
     private void FixedUpdate()
     {
         Vector3 velocity = (transform.position - lastPos) / Time.fixedDeltaTime;
+
         if (velocity.magnitude > latestHighestVelocity)
         {
             latestHighestVelocity = velocity.magnitude;
+
             if (resetVelocityCoroutine != null)
                 StopCoroutine(resetVelocityCoroutine);
+
             resetVelocityCoroutine = StartCoroutine(ResetVelocityCheck());
+        }
+
+        //  AUTO-CAST WHEN VELOCITY THRESHOLD IS HIT
+        if (crystal != null && canCast && latestHighestVelocity >= velocityRequiredToCast)
+        {
+            AutoCast();
         }
 
         lastPos = transform.position;
@@ -62,49 +75,60 @@ public class WandBehaviour : MonoBehaviour
         latestHighestVelocity = 0f;
     }
 
-
-    public void ElementWandResponse(InputAction.CallbackContext context)
+    private void AutoCast()
     {
-        //Checks the element gem slot, then executes that specific function. Easy to expand.
-        if (context.performed && crystal != null && latestHighestVelocity >= velocityRequiredToCast)
-        {
-            if (crystal.isProjectile)
-            {
-                FireProjectile();
-            }
-            else
-            {
-                FireRaycast();
-            }
-        }
+        canCast = false;   // prevent multi-cast spam
+        StartCoroutine(CastCooldownTimer());
+
+        if (crystal.isProjectile)
+            FireProjectile();
+        else
+            FireRaycast();
     }
 
-    [ContextMenu("Fire Projectile")]
+    private IEnumerator CastCooldownTimer()
+    {
+        yield return new WaitForSeconds(castCooldown);
+        canCast = true;
+    }
+
     private void FireProjectile()
     {
+        if (wandProjectiles.Length == 0) return;
+
         WandProjectile projectile = wandProjectiles[projectileIndex];
         projectile.Initialize(crystal.elementType, crystal.explosionRadius);
-        projectile.gameObject.SetActive(true);
+
         projectile.transform.position = wandEndTrans.position;
-        projectile.LaunchProjectile(wandEndTrans.transform.up * crystal.projectileSpeed);
+        projectile.gameObject.SetActive(true);
+
+        projectile.LaunchProjectile(wandEndTrans.up * crystal.projectileSpeed);
+
         projectileIndex = (projectileIndex + 1) % wandProjectiles.Length;
     }
 
-    [ContextMenu("Fire Raycast")]
     private void FireRaycast()
     {
-        // checks if the raycast hits an object that is on the electricty layer and reads the name, we could also do this in the elctric gem script
-        if (Physics.Raycast(wandEndTrans.position, transform.TransformDirection(Vector3.up), out hit, Mathf.Infinity))
+        Vector3 dir = wandEndTrans.up;
+
+        if (Physics.Raycast(wandEndTrans.position, dir, out hit, Mathf.Infinity))
         {
-            if (hit.collider.gameObject.GetComponent<ElementalInteractor>() != null)
-                hit.collider.gameObject.GetComponent<ElementalInteractor>().ElementHit(crystal.elementType);
+            ElementalInteractor interactor = hit.collider.GetComponent<ElementalInteractor>();
+            if (interactor != null)
+                interactor.ElementHit(crystal.elementType);
+
+            if (lineRendererCoroutine != null)
+                StopCoroutine(lineRendererCoroutine);
+
             lineRendererCoroutine = StartCoroutine(LineRendererTimer(hit.point));
         }
     }
 
     private IEnumerator LineRendererTimer(Vector3 hitPos)
     {
+        lineRenderer.SetPosition(0, wandEndTrans.position);
         lineRenderer.SetPosition(1, hitPos);
+
         lineRenderer.enabled = true;
         yield return new WaitForSeconds(lineRendererDuration);
         lineRenderer.enabled = false;
@@ -112,12 +136,13 @@ public class WandBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Crystal>() != null)
-        {
-            other.gameObject.transform.parent = gemSlot;
-            other.transform.position = gemSlot.position;
-            other.GetComponent<Rigidbody>().isKinematic = true;
-            crystal = other.GetComponent<Crystal>();
-        }
+        Crystal newCrystal = other.GetComponent<Crystal>();
+        if (newCrystal == null) return;
+
+        newCrystal.transform.SetParent(gemSlot);
+        newCrystal.transform.localPosition = Vector3.zero;
+        newCrystal.GetComponent<Rigidbody>().isKinematic = true;
+
+        crystal = newCrystal;
     }
 }
