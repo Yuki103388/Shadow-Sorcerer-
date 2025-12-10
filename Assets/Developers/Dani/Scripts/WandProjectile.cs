@@ -1,14 +1,16 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class WandProjectile : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody rb;
+    private GameObject visuals;
 
     [Header("Settings")]
     [SerializeField] private float lifeTime = 5f;
-    [SerializeField] private int explosionForce = 10;
+    private float explosionForce;
     private ElementType elementType;
     private float explosionRadius;
 
@@ -17,10 +19,18 @@ public class WandProjectile : MonoBehaviour
         StartCoroutine(LifeTimer());
     }
 
-    public void Initialize(ElementType type, float radius)
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        Destroy(visuals);
+    }
+
+    public void Initialize(ElementType type, float radius, float force, GameObject visualPrefab)
     {
         elementType = type;
         explosionRadius = radius;
+        explosionForce = force;
+        visuals = Instantiate(visualPrefab, transform.position, Quaternion.identity, transform);
     }
 
     private IEnumerator LifeTimer()
@@ -35,22 +45,10 @@ public class WandProjectile : MonoBehaviour
         Debug.Log("Hit " + other.gameObject.name);
         if (other.gameObject.name == "Wand" || other.gameObject.GetComponent<Crystal>() != null) return;
 
-        // if (other.GetComponent<receivingscript>() != null)
-        // {
-        //     other.GetComponent<receivingscript>().ReceiveHit();
-        // }
-
         Explode();
-
 
         gameObject.SetActive(false);
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-
-    }
-
 
     private void Explode()
     {
