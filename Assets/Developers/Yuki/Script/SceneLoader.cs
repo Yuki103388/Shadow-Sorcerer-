@@ -22,7 +22,7 @@ public class SceneLoader : MonoBehaviour
 
     public void Setting()
     {
-        SceneManager.LoadScene("Settings");
+        SceneManager.LoadScene("Setting");
     }
 
 }
