@@ -355,6 +355,17 @@
                 },
                 {
                     "name": "",
+                    "id": "46c35dfe-4da2-4aca-938e-edc067687619",
+                    "path": "<QuestTouchPlusController>/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XR",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cbac6039-9c09-46a1-b5f2-4e5124ccb5ed",
                     "path": "<Keyboard>/2",
                     "interactions": "",
