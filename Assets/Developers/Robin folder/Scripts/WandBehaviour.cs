@@ -117,11 +117,17 @@ public class WandBehaviour : MonoBehaviour
             other.transform.position = gemSlot.position;
             other.GetComponent<Rigidbody>().isKinematic = true;
             crystal = other.GetComponent<Crystal>();
-            if (crystal.isProjectile)
+            if (!crystal.isProjectile)
             {
                 lineRenderer.material = crystal.lineRendererMaterial;
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Crystal>() != null)
+            RemoveCrystal();
     }
 
     public void RemoveCrystal()
