@@ -250,7 +250,8 @@ GameObject:
   - component: {fileID: 2185125541803007530}
   - component: {fileID: 7998919563807271493}
   - component: {fileID: 8497591447016552814}
-  - component: {fileID: 5922039674479761296}
+  - component: {fileID: 2788702646236000217}
+  - component: {fileID: 1252622600904938668}
   m_Layer: 0
   m_Name: Wand
   m_TagString: Untagged
@@ -623,7 +624,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.015
   m_Center: {x: 0.005, y: 0, z: 0.149}
---- !u!95 &5922039674479761296
+--- !u!135 &2788702646236000217
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036331114670009997}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.015
+  m_Center: {x: 0.005, y: 0, z: 0.149}
+--- !u!95 &1252622600904938668
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -694,7 +716,7 @@ MonoBehaviour:
   OnCrystalEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5922039674479761296}
+      - m_Target: {fileID: 1252622600904938668}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -709,7 +731,7 @@ MonoBehaviour:
   OnCrystalExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5922039674479761296}
+      - m_Target: {fileID: 1252622600904938668}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
