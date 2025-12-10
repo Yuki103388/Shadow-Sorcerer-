@@ -1,6 +1,3 @@
-    using System.Runtime.InteropServices.WindowsRuntime;
-    using Meta.XR.ImmersiveDebugger.UserInterface;
-    using Unity.VisualScripting;
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using UnityEngine.UI;
