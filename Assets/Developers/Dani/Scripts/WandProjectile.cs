@@ -43,11 +43,15 @@ public class WandProjectile : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         Debug.Log("Hit " + other.gameObject.name);
-        if (other.gameObject.name == "Wand" || other.gameObject.GetComponent<Crystal>() != null) return;
+        //if (other.gameObject.name == "Wand" || other.gameObject.GetComponent<Crystal>() != null) return;
+        if (other.gameObject.name != "Wand")
+        {
+            Explode();
 
-        Explode();
+            Destroy(gameObject);
+        }
 
-        gameObject.SetActive(false);
+       
     }
 
     private void Explode()
@@ -62,7 +66,7 @@ public class WandProjectile : MonoBehaviour
 
             // knock and move objects away if they have a rigidbody for fun :3
             if ((hitGameObject.gameObject.GetComponent<Rigidbody>() != null)
-            && !hitGameObject.gameObject.GetComponent<Rigidbody>().isKinematic)
+            )
             {
                 hitGameObject.gameObject.GetComponent<Rigidbody>().AddForce(hitDirection.normalized * explosionForce / (hitDistance + 0.5f), ForceMode.Impulse);
             }
