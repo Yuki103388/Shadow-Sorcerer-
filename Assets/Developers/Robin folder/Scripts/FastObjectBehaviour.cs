@@ -6,12 +6,17 @@ public class FastObjectBehaviour : MonoBehaviour
     [Header("Components")]
     private Rigidbody _rb;
     private ElementalInteractor _interactor;
+    private Renderer _renderer;
+    [SerializeField] Material _iceMaterial;
+    [SerializeField] Material _baseMaterial;
     [Header("variables")]
+    private bool _canInteract = false;
     [SerializeField] private int _speed;
     private bool canMove = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        _renderer = GetComponentInChildren<Renderer>();
         _rb = GetComponent<Rigidbody>();
         _interactor = GetComponent<ElementalInteractor>();
     }
@@ -20,6 +25,11 @@ public class FastObjectBehaviour : MonoBehaviour
     void Update()
     {
         Movement(canMove);
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            _interactor.OnCorrectElement.Invoke();
+        }
     }
 
     // moves the object forwards multiplied by the speed var
@@ -48,6 +58,8 @@ public class FastObjectBehaviour : MonoBehaviour
     public void FreezeObject()
     {
         canMove = false;
+        _rb.isKinematic = false;
+        _renderer.material = _iceMaterial;
         _interactor.elementNeeded = ElementType.Fire;
         _interactor.OnCorrectElement.AddListener(UnFreezeObject);
     }
@@ -55,7 +67,8 @@ public class FastObjectBehaviour : MonoBehaviour
     // makes the object fall and unfreeze it and makes it uninteractable for the wand
     private void UnFreezeObject()
     {
-        _rb.isKinematic = false;
+        _canInteract = true;
+        _renderer.material = _baseMaterial;
         _interactor.elementNeeded = ElementType.None;
         _interactor.OnCorrectElement = null;
     }
@@ -65,6 +78,12 @@ public class FastObjectBehaviour : MonoBehaviour
         switch (other.name)
         {
             case "wall": FlipDirection(); break;
+            case "Hands":
+                if (_canInteract)
+                {
+                    //add code to interact with vr hands
+                }
+            break;
         }
     }
 }
