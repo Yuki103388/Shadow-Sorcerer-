@@ -25,11 +25,6 @@ public class FastObjectBehaviour : MonoBehaviour
     void Update()
     {
         Movement(canMove);
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            _interactor.OnCorrectElement.Invoke();
-        }
     }
 
     // moves the object forwards multiplied by the speed var
@@ -54,7 +49,7 @@ public class FastObjectBehaviour : MonoBehaviour
         }
     }
 
-    // stops the object and freezes it, sets the required element to be fire to set it free
+    // stops the object and freezes it, sets the required element to be fire to unfreeze it
     public void FreezeObject()
     {
         canMove = false;
@@ -75,9 +70,10 @@ public class FastObjectBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (other.name)
+        // change this to tag
+        switch (other.tag)
         {
-            case "wall": FlipDirection(); break;
+            case "Wall": FlipDirection(); break;
             case "Hands":
                 if (_canInteract)
                 {
