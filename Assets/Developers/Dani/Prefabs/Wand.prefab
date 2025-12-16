@@ -299,6 +299,7 @@ MonoBehaviour:
   gemSlot: {fileID: 4714415204152612940}
   velocityRequiredToCast: 0
   velocityWindow: 0.2
+  castCooldown: 1
   lineRendererDuration: 0.5
 --- !u!114 &8708265085841957745
 MonoBehaviour:

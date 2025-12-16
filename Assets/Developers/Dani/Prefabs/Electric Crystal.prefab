@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3682864721574491071}
   - component: {fileID: 3260515950358690876}
   m_Layer: 0
-  m_Name: Electic Crystal
+  m_Name: Electric Crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

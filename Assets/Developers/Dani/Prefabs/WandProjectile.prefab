@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8640773817778873777}
-  lifeTime: 5
+  lifeTime: 4
 --- !u!33 &4950152350972651844
 MeshFilter:
   m_ObjectHideFlags: 0
