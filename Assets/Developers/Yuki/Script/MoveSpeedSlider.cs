@@ -12,33 +12,47 @@ public class MoveSpeedSlider : MonoBehaviour
     public float maxSpeed = 60f;
 
     Slider slider;
-    FirstPersonLocomotor locomotor;
 
     void Start()
     {
         slider = GetComponent<Slider>();
-        locomotor = FindAnyObjectByType<FirstPersonLocomotor>();
 
-        float saved = PlayerPrefs.GetFloat("MoveSpeed", 30f);
-        slider.SetValueWithoutNotify(Mathf.InverseLerp(minSpeed, maxSpeed, saved));
+        slider.wholeNumbers = false;
+        slider.minValue = 0f;
+        slider.maxValue = 1f;
 
-        Apply(saved);
-        UpdateText(saved);
+        // Laad opgeslagen speed via SettingsManager (of default 30)
+        float savedSpeed = SettingsManager.Instance != null
+            ? SettingsManager.Instance.GetMoveSpeed(30f)
+            : PlayerPrefs.GetFloat("MoveSpeed", 30f);
+
+        float saved01 = Mathf.InverseLerp(minSpeed, maxSpeed, savedSpeed);
+        slider.SetValueWithoutNotify(saved01);
+
+        UpdateText(savedSpeed);
 
         slider.onValueChanged.AddListener(OnChanged);
+
+        // Apply meteen (voor de huidige scene)
+        Apply(savedSpeed);
     }
 
     void OnChanged(float value01)
     {
         float speed = Mathf.Lerp(minSpeed, maxSpeed, value01);
-        PlayerPrefs.SetFloat("MoveSpeed", speed);
 
-        Apply(speed);
+        //Dit is de belangrijke fix:
+        if (SettingsManager.Instance != null)
+            SettingsManager.Instance.SetMoveSpeed(speed); // slaat op + apply in huidige scene
+        else
+            PlayerPrefs.SetFloat("MoveSpeed", speed);
+
         UpdateText(speed);
     }
 
     void Apply(float speed)
     {
+        var locomotor = FindAnyObjectByType<FirstPersonLocomotor>();
         if (locomotor != null)
             locomotor.SpeedFactor = speed;
     }
