@@ -82,8 +82,8 @@ public class WandBehaviour : MonoBehaviour
     private void FireProjectile()
     {
         WandProjectile projectile = wandProjectiles[projectileIndex];
-        projectile.Initialize(crystal.elementType, crystal.explosionRadius, crystal.explosionForce, crystal.projectilePrefab);
         projectile.gameObject.SetActive(true);
+        projectile.Initialize(crystal.elementType, crystal.explosionRadius, crystal.explosionForce, crystal.projectilePrefab);
         projectile.transform.position = wandEndTrans.position;
         projectile.LaunchProjectile(wandEndTrans.transform.up * crystal.projectileSpeed);
         projectileIndex = (projectileIndex + 1) % wandProjectiles.Length;

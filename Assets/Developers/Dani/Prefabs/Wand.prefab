@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893375595242247495}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 135316606925960506}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1473552131037031217
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +250,6 @@ GameObject:
   - component: {fileID: 2185125541803007530}
   - component: {fileID: 7998919563807271493}
   - component: {fileID: 8497591447016552814}
-  - component: {fileID: 2788702646236000217}
   - component: {fileID: 1252622600904938668}
   m_Layer: 0
   m_Name: Wand
@@ -296,11 +295,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  wandAnimator: {fileID: 0}
   wandEndTrans: {fileID: 3607934208229838075}
   gemSlot: {fileID: 4714415204152612940}
   velocityRequiredToCast: 0
-  timeWindowToCheckVelocity: 0.2
+  velocityWindow: 0.2
   lineRendererDuration: 0.5
 --- !u!114 &8708265085841957745
 MonoBehaviour:
@@ -604,27 +602,6 @@ CapsuleCollider:
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.15}
 --- !u!135 &8497591447016552814
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5036331114670009997}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.015
-  m_Center: {x: 0.005, y: 0, z: 0.149}
---- !u!135 &2788702646236000217
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

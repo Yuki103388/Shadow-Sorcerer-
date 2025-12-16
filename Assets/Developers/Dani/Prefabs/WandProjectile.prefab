@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7092910218470228863
 Transform:
   m_ObjectHideFlags: 0
@@ -50,7 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8640773817778873777}
   lifeTime: 5
-  explosionForce: 3
 --- !u!33 &4950152350972651844
 MeshFilter:
   m_ObjectHideFlags: 0
