@@ -1,84 +1,48 @@
-    using UnityEngine;
-    using UnityEngine.SceneManagement;
-    using UnityEngine.UI;
+using Oculus.Interaction;
+using Oculus.Interaction.Locomotion;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
+public class SettingsManager : MonoBehaviour
+{
+    public static SettingsManager Instance;
 
-    public class SettingManager : MonoBehaviour
+    public bool TunnelingEnabled = true;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void Bootstrap()
     {
-        public static SettingManager Instance { get; private set; }
+        if (Instance != null) return;
 
-        [SerializeField] private GameObject vignetteObject;
-
-        private Toggle uiToggle;
-        private bool vignetteEnabled;
-
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-                SceneManager.sceneLoaded += OnSceneLoaded;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        private void Start()
-        {
-            uiToggle = GetComponent<Toggle>();
-            if (uiToggle != null)
-            {
-                uiToggle.isOn = vignetteEnabled;
-                uiToggle.onValueChanged.AddListener(ToggleVignette);
-            }
-
-            ApplyVignetteToObject();
-        }
-
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            // Try to find vignette object in the new scene if inspector reference is null
-            if (vignetteObject == null)
-            {
-                // Prefer tagging the vignette GameObject with "Vignette"
-                vignetteObject = GameObject.FindWithTag("Vignette") ?? GameObject.Find("Vignette");
-            }
-
-            // Re-bind UI toggle in the new scene (if a Toggle exists for the setting)
-            uiToggle = FindAnyObjectByType<Toggle>();
-            if (uiToggle != null)
-            {
-                uiToggle.onValueChanged.RemoveListener(ToggleVignette);
-                uiToggle.isOn = vignetteEnabled;
-                uiToggle.onValueChanged.AddListener(ToggleVignette);
-            }
-
-            ApplyVignetteToObject();
-        }
-
-        public void ToggleVignette(bool state)
-        {
-            vignetteEnabled = state;
-            ApplyVignetteToObject();
-            Debug.Log("Vignette Toggle State: " + state);
-        }
-
-        private void ApplyVignetteToObject()
-        {
-            if (vignetteObject != null)
-            {
-                vignetteObject.SetActive(vignetteEnabled);
-            }
-        }
-
-        private void OnDestroy()
-        {
-            if (Instance == this)
-            {
-                SceneManager.sceneLoaded -= OnSceneLoaded;
-            }
-        }
+        var go = new GameObject("SettingsManager");
+        go.AddComponent<SettingsManager>();
+        DontDestroyOnLoad(go);
     }
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += (_, __) => ApplyTunneling();
+    }
+
+    public void SetTunneling(bool enabled)
+    {
+        TunnelingEnabled = enabled;
+        ApplyTunneling();
+    }
+
+    void ApplyTunneling()
+    {
+        var go = GameObject.Find("SmoothMovementTunneling");
+        if (!go) return;
+
+        var effect = go.GetComponent<TunnelingEffect>();
+        if (effect) effect.enabled = TunnelingEnabled;
+
+        var loco = go.GetComponent<LocomotionTunneling>();
+        if (loco) loco.enabled = TunnelingEnabled;
+    }
+}
