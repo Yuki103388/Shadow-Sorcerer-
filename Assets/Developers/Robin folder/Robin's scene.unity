@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 661886147}
   m_Layer: 0
   m_Name: wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 700862214}
   m_Layer: 0
   m_Name: wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1040,6 +1040,14 @@ PrefabInstance:
     - target: {fileID: 9026746320637365082, guid: d6c502a155ff1b1478934244dbe84026, type: 3}
       propertyPath: m_Center.z
       value: -0.091323555
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127410285969069023, guid: d6c502a155ff1b1478934244dbe84026, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127410285969069023, guid: d6c502a155ff1b1478934244dbe84026, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

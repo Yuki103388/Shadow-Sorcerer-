@@ -12,6 +12,7 @@ TagManager:
   - Hand
   - Electricity
   - Rune
+  - Wall
   layers:
   - Default
   - TransparentFX
