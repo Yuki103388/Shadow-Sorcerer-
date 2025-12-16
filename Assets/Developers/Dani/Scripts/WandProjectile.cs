@@ -42,16 +42,11 @@ public class WandProjectile : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.name == "Wand" || other.gameObject.GetComponent<Crystal>() != null) return;
+
         Debug.Log("Hit " + other.gameObject.name);
-        //if (other.gameObject.name == "Wand" || other.gameObject.GetComponent<Crystal>() != null) return;
-        if (other.gameObject.name != "Wand")
-        {
-            Explode();
 
-            Destroy(gameObject);
-        }
-
-       
+        Explode();
     }
 
     private void Explode()

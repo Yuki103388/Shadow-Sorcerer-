@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3682864721574491071}
   - component: {fileID: 3260515950358690876}
   m_Layer: 0
-  m_Name: Electic Crystal
+  m_Name: Electric Crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VFX: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 3863098107337640894, guid: e9e8b1a1c0074dd4285472c5bb1129fd, type: 3}
   lineRendererMaterial: {fileID: 0}
   elementType: 1
-  isProjectile: 0
+  isProjectile: 1
   projectileSpeed: 10
   explosionRadius: 50
   explosionForce: 5
