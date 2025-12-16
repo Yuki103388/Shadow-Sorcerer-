@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -18,4 +19,10 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
+
+    public void Setting()
+    {
+        SceneManager.LoadScene("Setting");
+    }
+
 }

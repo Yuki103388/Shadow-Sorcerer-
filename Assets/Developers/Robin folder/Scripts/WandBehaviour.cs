@@ -11,19 +11,25 @@ public class WandBehaviour : MonoBehaviour
     [SerializeField] Transform wandEndTrans;
     [SerializeField] Transform gemSlot;
     // [SerializeField] LayerMask electricityLayer;
+    public static WandBehaviour instance;
     private Crystal crystal;
-    private RaycastHit hit;
-
 
     [Header("Settings")]
     [SerializeField] private float velocityRequiredToCast;
-    [SerializeField] private float timeWindowToCheckVelocity = 0.2f;
-    [SerializeField] private float latestHighestVelocity;
+    [SerializeField] private float velocityWindow = 0.2f;
     [SerializeField] private float lineRendererDuration = 0.5f;
+    private float latestHighestVelocity;
     private Vector3 lastPos;
     private Coroutine resetVelocityCoroutine;
     private Coroutine lineRendererCoroutine;
     private int projectileIndex;
+    private RaycastHit hit;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -51,16 +57,16 @@ public class WandBehaviour : MonoBehaviour
 
     private IEnumerator ResetVelocityCheck()
     {
-        yield return new WaitForSeconds(timeWindowToCheckVelocity);
+        yield return new WaitForSeconds(velocityWindow);
         latestHighestVelocity = 0f;
     }
 
 
     public void ElementWandResponse(InputAction.CallbackContext context)
     {
-        //Checks the element gem slot, then executes that specific function. Easy to expand.
         if (context.performed && crystal != null && latestHighestVelocity >= velocityRequiredToCast)
         {
+            latestHighestVelocity = 0f; //reset to avoid multiple casts
             if (crystal.isProjectile)
             {
                 FireProjectile();
@@ -76,8 +82,8 @@ public class WandBehaviour : MonoBehaviour
     private void FireProjectile()
     {
         WandProjectile projectile = wandProjectiles[projectileIndex];
-        projectile.Initialize(crystal.elementType, crystal.explosionRadius);
         projectile.gameObject.SetActive(true);
+        projectile.Initialize(crystal.elementType, crystal.explosionRadius, crystal.explosionForce, crystal.projectilePrefab);
         projectile.transform.position = wandEndTrans.position;
         projectile.LaunchProjectile(wandEndTrans.transform.up * crystal.projectileSpeed);
         projectileIndex = (projectileIndex + 1) % wandProjectiles.Length;
@@ -86,7 +92,6 @@ public class WandBehaviour : MonoBehaviour
     [ContextMenu("Fire Raycast")]
     private void FireRaycast()
     {
-        // checks if the raycast hits an object that is on the electricty layer and reads the name, we could also do this in the elctric gem script
         if (Physics.Raycast(wandEndTrans.position, transform.TransformDirection(Vector3.up), out hit, Mathf.Infinity))
         {
             if (hit.collider.gameObject.GetComponent<ElementalInteractor>() != null)
@@ -111,6 +116,26 @@ public class WandBehaviour : MonoBehaviour
             other.transform.position = gemSlot.position;
             other.GetComponent<Rigidbody>().isKinematic = true;
             crystal = other.GetComponent<Crystal>();
+            if (!crystal.isProjectile)
+            {
+                lineRenderer.material = crystal.lineRendererMaterial;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Crystal>() != null)
+            RemoveCrystal();
+    }
+
+    public void RemoveCrystal()
+    {
+        if (crystal != null)
+        {
+            crystal.gameObject.transform.parent = null;
+            crystal.GetComponent<Rigidbody>().isKinematic = false;
+            crystal = null;
         }
     }
 }
