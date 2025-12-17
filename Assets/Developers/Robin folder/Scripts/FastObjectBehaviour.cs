@@ -1,25 +1,28 @@
 using Oculus.Interaction;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FastObjectBehaviour : MonoBehaviour
 {
     [Header("Components")]
+    private GrabInteractable _interactable;
     private Rigidbody _rb;
     private ElementalInteractor _interactor;
     private Renderer _renderer;
     [SerializeField] Material _iceMaterial;
     [SerializeField] Material _baseMaterial;
     [Header("variables")]
-    private bool _canInteract = false;
     [SerializeField] private int _speed;
     private bool canMove = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        _interactable= GetComponent<GrabInteractable>();
         _renderer = GetComponentInChildren<Renderer>();
         _rb = GetComponent<Rigidbody>();
         _interactor = GetComponent<ElementalInteractor>();
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -62,7 +65,7 @@ public class FastObjectBehaviour : MonoBehaviour
     // makes the object fall and unfreeze it and makes it uninteractable for the wand
     private void UnFreezeObject()
     {
-        _canInteract = true;
+        _interactable.enabled = true;
         _renderer.material = _baseMaterial;
         _interactor.elementNeeded = ElementType.None;
         _interactor.OnCorrectElement = null;
@@ -74,12 +77,6 @@ public class FastObjectBehaviour : MonoBehaviour
         switch (other.tag)
         {
             case "Wall": FlipDirection(); break;
-            case "Hands":
-                if (_canInteract)
-                {
-                    //add code to interact with vr hands
-                }
-            break;
         }
     }
 }
