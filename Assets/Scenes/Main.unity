@@ -2671,6 +2671,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 775294717}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1231843912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7217447762893796974, guid: 720ec398cfa2c4a4ab7912a7227504dd, type: 3}
+  m_PrefabInstance: {fileID: 4463231559045909975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1234659200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,6 +3141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Electic Crystal
       objectReference: {fileID: 0}
+    - target: {fileID: 8981899502118164119, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 1231843912}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3272,6 +3281,18 @@ PrefabInstance:
       propertyPath: 'wandProjectiles.Array.data[2]'
       value: 
       objectReference: {fileID: 1615726343}
+    - target: {fileID: 7998919563807271493, guid: 6f6230b72a643ab489446493dafd1020, type: 3}
+      propertyPath: m_Height
+      value: 0.1293111
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998919563807271493, guid: 6f6230b72a643ab489446493dafd1020, type: 3}
+      propertyPath: m_Center.y
+      value: 3.0632205e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998919563807271493, guid: 6f6230b72a643ab489446493dafd1020, type: 3}
+      propertyPath: m_Center.z
+      value: 0.064655535
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
