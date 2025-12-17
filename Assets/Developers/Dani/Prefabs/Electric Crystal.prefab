@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3682864721574491071}
   - component: {fileID: 3260515950358690876}
   m_Layer: 0
-  m_Name: Electic Crystal
+  m_Name: Electric Crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.796875, y: 2.4375, z: 1.140625}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,10 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0df224df8500045bd40107aedf29d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VFX: {fileID: 0}
+  projectilePrefab: {fileID: 3863098107337640894, guid: e9e8b1a1c0074dd4285472c5bb1129fd, type: 3}
+  lineRendererMaterial: {fileID: 0}
   elementType: 1
-  isProjectile: 0
+  isProjectile: 1
   projectileSpeed: 10
   explosionRadius: 50
+  explosionForce: 5
 --- !u!33 &1277299464261418242
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -149,7 +153,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
