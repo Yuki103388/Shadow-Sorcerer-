@@ -39,9 +39,9 @@ public class SpinningWheelBehaviour : MonoBehaviour
         while(true) { 
             _transform.Rotate(0, 0, -spinSpeed);
             spinSpeed = .99f * spinSpeed; 
-            if(spinSpeed <= 0.5f)
+            if(spinSpeed <= .005f)
             {
-                spinSpeed = 200;
+                spinSpeed = 150;
                 StopAllCoroutines();
             }
             yield return null;
