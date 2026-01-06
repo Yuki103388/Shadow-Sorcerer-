@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class SpinningWheelBehaviour : MonoBehaviour
 {
     private Transform _transform;
+    private bool frozen = false;
     [SerializeField] private List<WheelElement> _wheelElement;
     [SerializeField] private float spinSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,15 +24,21 @@ public class SpinningWheelBehaviour : MonoBehaviour
 
     public void SpinWheel(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !frozen)
         {
             StartCoroutine(SpinWheelTest());
         }
     }
 
-    private void CheckWinOrLose()
+    public void FreezeWheel()
     {
+        StopAllCoroutines();
+        frozen = true;
+    }
 
+    public void UnfreezeWheel()
+    {
+        frozen = false;
     }
 
     private IEnumerator SpinWheelTest()
