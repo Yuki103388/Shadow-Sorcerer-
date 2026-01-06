@@ -5,7 +5,8 @@ public enum ElementType
     None,
     Electric,
     Fire,
-    Ice
+    Ice,
+    Duplicate
 }
 
 public class Crystal : Interactable
