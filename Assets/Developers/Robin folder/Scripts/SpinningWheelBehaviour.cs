@@ -10,7 +10,7 @@ public class SpinningWheelBehaviour : MonoBehaviour
     private Transform _transform;
     private bool frozen = false;
     [SerializeField] private List<WheelElement> _wheelElement;
-    [SerializeField] private float spinSpeed;
+    public float spinSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -46,7 +46,7 @@ public class SpinningWheelBehaviour : MonoBehaviour
         while(true) { 
             _transform.Rotate(0, 0, -spinSpeed);
             spinSpeed = .99f * spinSpeed; 
-            if(spinSpeed <= .005f)
+            if(spinSpeed <= .05f)
             {
                 spinSpeed = 150;
                 StopAllCoroutines();
