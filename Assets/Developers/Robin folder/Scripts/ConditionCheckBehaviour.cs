@@ -15,13 +15,12 @@ public class ConditionCheckBehaviour : MonoBehaviour
     void Update()
     {
         ConditionCheck();
-        Debug.Log(wheelBehaviour.spinSpeed);
     }
 
     private void ConditionCheck()
     {
-        Ray ray = new Ray(transform.position,transform.TransformDirection(transform.up));
-        if (wheelBehaviour.spinSpeed <=.05f &&Physics.Raycast(ray, out hit, 15f, conditionMask))
+        Ray ray = new Ray(transform.position,transform.TransformDirection(Vector3.up) * 10);
+        if (wheelBehaviour.spinSpeed <=.05f &&Physics.Raycast(ray, out hit, Mathf.Infinity, conditionMask))
             Debug.Log(hit.transform.name);
     }
 }
