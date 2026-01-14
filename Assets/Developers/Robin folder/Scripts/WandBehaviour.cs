@@ -121,6 +121,7 @@ public class WandBehaviour : MonoBehaviour
         {
             other.gameObject.transform.parent = gemSlot;
             other.transform.position = gemSlot.position;
+            other.transform.eulerAngles = new Vector3(90, 0, 0);
             other.GetComponent<Rigidbody>().isKinematic = true;
             crystal = other.GetComponent<Crystal>();
             if (!crystal.isProjectile)

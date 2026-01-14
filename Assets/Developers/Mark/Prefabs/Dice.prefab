@@ -661,6 +661,8 @@ GameObject:
   - component: {fileID: 953926735124305688}
   - component: {fileID: 6731135690092309089}
   - component: {fileID: 4774070357958203684}
+  - component: {fileID: 1220460171999077184}
+  - component: {fileID: 2746246870432196504}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Dice
@@ -676,7 +678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933770883483818370}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14276898, y: -0.67207813, z: 0.14647235, w: 0.7116698}
+  m_LocalRotation: {x: 0.1427719, y: -0.67207843, z: 0.1464713, w: 0.7116692}
   m_LocalPosition: {x: 0.509112, y: 0.17740011, z: 10.959387}
   m_LocalScale: {x: 50, y: 50, z: 68.128334}
   m_ConstrainProportionsScale: 0
@@ -693,7 +695,7 @@ Transform:
   - {fileID: 6089121559220028893}
   - {fileID: 5872266010991477473}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.584, y: -86.506, z: 1.036}
 --- !u!33 &3169562485734019972
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -830,6 +832,54 @@ MonoBehaviour:
   _rigidbody: {fileID: 953926735124305688}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
+--- !u!114 &1220460171999077184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933770883483818370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9257c8796bf44408b7f8ef10c3bca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementNeeded: 4
+  OnCorrectElement:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2746246870432196504}
+        m_TargetAssemblyTypeName: Duplicatable, Assembly-CSharp
+        m_MethodName: Duplicate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  grabbable: {fileID: 0}
+--- !u!114 &2746246870432196504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933770883483818370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aebe0ff594727e4c9e3ed603d5eb79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectCollider: {fileID: 1741411191598683250}
+  maxDuplicates: 1
+  duplicateHeightMultiplier: 2
+  spawnTowardsWand: 1
+  onDuplicate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1497960014456542278
 GameObject:
   m_ObjectHideFlags: 0
