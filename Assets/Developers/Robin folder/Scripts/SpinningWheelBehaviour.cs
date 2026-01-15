@@ -34,7 +34,7 @@ public class SpinningWheelBehaviour : MonoBehaviour
 
     public void FreezeWheel()
     {
-        StopAllCoroutines();
+        spinSpeed = 0;
         frozen = true;
     }
 
@@ -49,11 +49,22 @@ public class SpinningWheelBehaviour : MonoBehaviour
         Ray ray = new Ray(_conditionCheckTrans.position,_conditionCheckTrans.TransformDirection(Vector3.right));
         if(Physics.Raycast(ray,out hit, 5f, _conditionLayer))
         {
-            switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
+            if (!frozen)
             {
-                case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
-                case ElementWheel.win: spinSpeed = 35f; StartCoroutine(SpinWheelTest()); break;
+                switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
+                {
+                    case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
+                    case ElementWheel.win: spinSpeed = 35f; StartCoroutine(SpinWheelTest()); break;
+                }
             }
+            else if(frozen)
+            {
+                switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
+                {
+                    case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
+                    case ElementWheel.win: Debug.Log("win"); break;
+                }
+            } 
         }
     }
 
