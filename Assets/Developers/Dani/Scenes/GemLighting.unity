@@ -128,8 +128,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 612422720661124579, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_Name
@@ -197,8 +209,20 @@ PrefabInstance:
       value: 91ab5496-1155-4808-b9dc-0b4e4ebe2c9a
       objectReference: {fileID: 0}
     - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7008735477546299573, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -258,8 +282,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5671789682736569823, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_LocalPosition.x
@@ -319,8 +355,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5671789682736569823, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_LocalPosition.x
@@ -380,8 +428,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5136764011067249308, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: instanceId
@@ -445,8 +505,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7008735477546299573, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -510,8 +582,20 @@ PrefabInstance:
       value: 104f0629-93eb-43c5-bd14-cfdbdfa972d3
       objectReference: {fileID: 0}
     - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7176553989989810476, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -571,8 +655,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 612422720661124579, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_Name
@@ -632,8 +728,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7176553989989810476, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -693,8 +801,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5136764011067249308, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: instanceId
@@ -762,8 +882,24 @@ PrefabInstance:
       value: 36e3860f-dcb7-4303-9c56-d560a5fa1dc1
       objectReference: {fileID: 0}
     - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_ImplicitCom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7008735477546299573, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -823,8 +959,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 612422720661124579, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_Name
@@ -888,8 +1036,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7176553989989810476, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1061,8 +1221,20 @@ PrefabInstance:
       value: 7e4c1405-28c5-4840-98f2-5f3dfff827e7
       objectReference: {fileID: 0}
     - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7176553989989810476, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1122,8 +1294,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 612422720661124579, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_Name
@@ -1187,8 +1371,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5136764011067249308, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: instanceId
@@ -1256,8 +1452,20 @@ PrefabInstance:
       value: 6b69a08b-6f19-4040-b716-db8a1ec8fed1
       objectReference: {fileID: 0}
     - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7176553989989810476, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1317,8 +1525,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7008735477546299573, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1378,8 +1598,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 612422720661124579, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_Name
@@ -1443,8 +1675,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 612422720661124579, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_Name
@@ -1508,8 +1752,20 @@ PrefabInstance:
       value: f418966c-1355-408f-8247-9908a0fb18a0
       objectReference: {fileID: 0}
     - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7176553989989810476, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1569,8 +1825,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5136764011067249308, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: instanceId
@@ -1771,8 +2039,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5136764011067249308, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: instanceId
@@ -1840,8 +2120,20 @@ PrefabInstance:
       value: ad8bde89-5dd2-4087-afee-d1237ae0703b
       objectReference: {fileID: 0}
     - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7008735477546299573, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1905,8 +2197,20 @@ PrefabInstance:
       value: 964346ea-d163-4a72-bc7f-f3b8d15bf697
       objectReference: {fileID: 0}
     - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7008735477546299573, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1966,8 +2270,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 612422720661124579, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_Name
@@ -2035,8 +2351,20 @@ PrefabInstance:
       value: e470e821-c38a-4321-ba4c-c62ca8ae4d35
       objectReference: {fileID: 0}
     - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7176553989989810476, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2100,8 +2428,20 @@ PrefabInstance:
       value: 08368b0f-0917-4ed6-b4e9-7bfa6c852702
       objectReference: {fileID: 0}
     - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7008735477546299573, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2161,8 +2501,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148244526728283467, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5136764011067249308, guid: 2e75e2aad4f72d74aa8bf29d9a5af746, type: 3}
       propertyPath: instanceId
@@ -2347,8 +2699,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227749723915008978, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 612422720661124579, guid: c23be2138959d2547a69abc1ad4bdc65, type: 3}
       propertyPath: m_Name
@@ -2416,8 +2780,20 @@ PrefabInstance:
       value: 40d5f146-ff2c-42fd-90a2-19b9367a49d4
       objectReference: {fileID: 0}
     - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260515950358690876, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7008735477546299573, guid: c7294c978504fb441afbbec78c537ae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2481,8 +2857,20 @@ PrefabInstance:
       value: c843d122-5715-474f-996f-5d8267498bf7
       objectReference: {fileID: 0}
     - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100900717588176459, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7176553989989810476, guid: 83786e93c5e75c043afe9e995dd0b5b5, type: 3}
       propertyPath: m_LocalPosition.x
