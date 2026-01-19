@@ -9,14 +9,19 @@ public class SpinningWheelBehaviour : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Transform _conditionCheckTrans;
+    [SerializeField] Transform winObjTrans;
     [SerializeField] LayerMask _conditionLayer;
     [SerializeField] List<WheelElement> _wheelElements;
+    [SerializeField] GameObject winObject;
+    private SpinningWheelBehaviour script;
+
     [Header("Variables")]
     private bool frozen = false;
     public float spinSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        script = GetComponent<SpinningWheelBehaviour>();
     }
 
     // Update is called once per frame
@@ -24,11 +29,11 @@ public class SpinningWheelBehaviour : MonoBehaviour
     {
     }
 
-    public void SpinWheel(InputAction.CallbackContext context)
+    public void SpinWheelInput(InputAction.CallbackContext context)
     {
         if (context.performed && !frozen)
         {
-            StartCoroutine(SpinWheelTest());
+            StartCoroutine(SpinWheel());
         }
     }
 
@@ -54,7 +59,7 @@ public class SpinningWheelBehaviour : MonoBehaviour
                 switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
                 {
                     case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
-                    case ElementWheel.win: spinSpeed = 35f; StartCoroutine(SpinWheelTest()); break;
+                    case ElementWheel.win: spinSpeed = 35f; StartCoroutine(SpinWheel()); break;
                 }
             }
             else if(frozen)
@@ -62,13 +67,13 @@ public class SpinningWheelBehaviour : MonoBehaviour
                 switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
                 {
                     case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
-                    case ElementWheel.win: Debug.Log("win"); break;
+                    case ElementWheel.win: Debug.Log("win");Instantiate(winObject,winObjTrans);script.enabled = false; break;
                 }
             } 
         }
     }
 
-    private IEnumerator SpinWheelTest()
+    public IEnumerator SpinWheel()
     {
         while(true) {
             transform.Rotate(0, 0, -spinSpeed);
