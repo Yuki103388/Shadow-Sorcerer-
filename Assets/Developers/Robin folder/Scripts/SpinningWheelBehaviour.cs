@@ -7,14 +7,16 @@ using System.Collections.Generic;
 
 public class SpinningWheelBehaviour : MonoBehaviour
 {
-    private Transform _transform;
+    [Header("Components")]
+    [SerializeField] Transform _conditionCheckTrans;
+    [SerializeField] LayerMask _conditionLayer;
+    [SerializeField] List<WheelElement> _wheelElements;
+    [Header("Variables")]
     private bool frozen = false;
-    [SerializeField] private List<WheelElement> _wheelElement;
-    [SerializeField] private float spinSpeed;
+    public float spinSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        _transform = GameObject.Find("wheel").transform;
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class SpinningWheelBehaviour : MonoBehaviour
 
     public void FreezeWheel()
     {
-        StopAllCoroutines();
+        spinSpeed = 0;
         frozen = true;
     }
 
@@ -41,13 +43,39 @@ public class SpinningWheelBehaviour : MonoBehaviour
         frozen = false;
     }
 
+    private void CheckCondition()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(_conditionCheckTrans.position,_conditionCheckTrans.TransformDirection(Vector3.right));
+        if(Physics.Raycast(ray,out hit, 5f, _conditionLayer))
+        {
+            if (!frozen)
+            {
+                switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
+                {
+                    case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
+                    case ElementWheel.win: spinSpeed = 35f; StartCoroutine(SpinWheelTest()); break;
+                }
+            }
+            else if(frozen)
+            {
+                switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
+                {
+                    case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
+                    case ElementWheel.win: Debug.Log("win"); break;
+                }
+            } 
+        }
+    }
+
     private IEnumerator SpinWheelTest()
     {
-        while(true) { 
-            _transform.Rotate(0, 0, -spinSpeed);
+        while(true) {
+            transform.Rotate(0, 0, -spinSpeed);
             spinSpeed = .99f * spinSpeed; 
-            if(spinSpeed <= .005f)
+            if(spinSpeed <= .05f)
             {
+                CheckCondition();
                 spinSpeed = 150;
                 StopAllCoroutines();
             }

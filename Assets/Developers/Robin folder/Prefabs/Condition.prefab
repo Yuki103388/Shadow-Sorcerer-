@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7955837850622091591}
   - component: {fileID: 7221594434166099246}
   - component: {fileID: 8658809461040768719}
-  m_Layer: 0
+  - component: {fileID: 4401226000450079124}
+  m_Layer: 31
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2890631758675563776}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000022351736, y: -0.000000089406946, z: 0.9000745, w: -0.43573603}
-  m_LocalPosition: {x: -0.236, y: -0.176, z: 3}
-  m_LocalScale: {x: 0.4248921, y: 0.14415051, z: -57.516712}
+  m_LocalPosition: {x: -0.24801, y: -0.16638, z: 3}
+  m_LocalScale: {x: 0.4248921, y: 0.11393224, z: -57.516712}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5454768765266962555}
@@ -65,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 194ead74dbd690b4099f8a60a7e800b5, type: 2}
+  - {fileID: 2100000, guid: bc63f309862452f41be6626db3b49891, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,6 +110,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &4401226000450079124
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890631758675563776}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 7.466822e-14}
+  m_Center: {x: 0.00000023841858, y: -0.00000023841858, z: -0.00000047683716}
 --- !u!1 &3096382308390025816
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +143,8 @@ GameObject:
   - component: {fileID: 2566652889809669605}
   - component: {fileID: 5504206999879128271}
   - component: {fileID: 4711754831648899874}
-  m_Layer: 0
+  - component: {fileID: 8411267554540221100}
+  m_Layer: 31
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,8 +160,8 @@ Transform:
   m_GameObject: {fileID: 3096382308390025816}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000014761457, y: 0.000000059604623, z: 0.9999345, w: -0.011445459}
-  m_LocalPosition: {x: -0.32525, y: -0.06316, z: 3}
-  m_LocalScale: {x: 0.36124521, y: 0.18976471, z: -57.516712}
+  m_LocalPosition: {x: -0.32487, y: -0.08018, z: 3}
+  m_LocalScale: {x: 0.36124521, y: 0.15572472, z: -57.516712}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5454768765266962555}
@@ -174,7 +197,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 194ead74dbd690b4099f8a60a7e800b5, type: 2}
+  - {fileID: 2100000, guid: bc63f309862452f41be6626db3b49891, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -218,6 +241,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &8411267554540221100
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096382308390025816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 1.0000004, z: 5.201967e-14}
+  m_Center: {x: 0.00000071525574, y: 0, z: -0.00000047683716}
 --- !u!1 &3320247664674634389
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +271,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5454768765266962555}
-  m_Layer: 0
+  - component: {fileID: 6595725718468337170}
+  m_Layer: 31
   m_Name: Condition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +297,19 @@ Transform:
   - {fileID: 4433217799874341168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6595725718468337170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3320247664674634389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1ac2dd05fd89549a43b24c42957d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheelElement: 0
 --- !u!1 &3580663565430093935
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +322,8 @@ GameObject:
   - component: {fileID: 2454572794457196382}
   - component: {fileID: 6903894480629942784}
   - component: {fileID: 372837349399145748}
-  m_Layer: 0
+  - component: {fileID: 7726562451951197194}
+  m_Layer: 31
   m_Name: Quad (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +376,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 194ead74dbd690b4099f8a60a7e800b5, type: 2}
+  - {fileID: 2100000, guid: bc63f309862452f41be6626db3b49891, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -361,3 +420,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &7726562451951197194
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3580663565430093935}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000006, y: 1.0000005, z: 7.1115504e-14}
+  m_Center: {x: 0.00000023841858, y: -0.00000035762787, z: -0.00000047683716}
