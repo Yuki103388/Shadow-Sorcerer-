@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class SpinningWheelBehaviour : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class SpinningWheelBehaviour : MonoBehaviour
     private SpinningWheelBehaviour script;
 
     [Header("Variables")]
-    private bool frozen = false;
+    public bool frozen = false;
+    private bool canSpin = false;
     public float spinSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -27,20 +29,13 @@ public class SpinningWheelBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
-
-    public void SpinWheelInput(InputAction.CallbackContext context)
-    {
-        if (context.performed && !frozen)
-        {
-            StartCoroutine(SpinWheel());
-        }
+        SpinWheel();
     }
 
     public void FreezeWheel()
     {
-        spinSpeed = 0;
         frozen = true;
+        CheckCondition();
     }
 
     public void UnfreezeWheel()
@@ -59,7 +54,7 @@ public class SpinningWheelBehaviour : MonoBehaviour
                 switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
                 {
                     case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
-                    case ElementWheel.win: spinSpeed = 35f; StartCoroutine(SpinWheel()); break;
+                    case ElementWheel.win: spinSpeed = 35f; RequestSpin(); break;
                 }
             }
             else if(frozen)
@@ -73,18 +68,23 @@ public class SpinningWheelBehaviour : MonoBehaviour
         }
     }
 
-    public IEnumerator SpinWheel()
+    public void RequestSpin()
     {
-        while(true) {
+        if (canSpin) return;
+            spinSpeed = 150f;
+            canSpin = true;
+    }
+
+    private void SpinWheel()
+    {
+        if(!frozen && canSpin) {
             transform.Rotate(0, 0, -spinSpeed);
-            spinSpeed = .99f * spinSpeed; 
-            if(spinSpeed <= .05f)
+            spinSpeed *= .99f;
+            if(spinSpeed <= .1f)
             {
                 CheckCondition();
-                spinSpeed = 150;
-                StopAllCoroutines();
+                canSpin = false;
             }
-            yield return null;
         }
     }
 }

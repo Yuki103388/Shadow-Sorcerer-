@@ -1,18 +1,29 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
-public class SpinWheel : MonoBehaviour
+public class SpinWheel : MonoBehaviour, IPointerClickHandler
 {
-    SpinningWheelBehaviour spinScript;
+    private SpinningWheelBehaviour spinScript;
+    private float baseSpinSpeed;
 
     private void Awake()
     {
         spinScript = GetComponentInParent<SpinningWheelBehaviour>();
+        baseSpinSpeed = spinScript.spinSpeed;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Hand"))
         {
-            StartCoroutine(spinScript.SpinWheel());
+            spinScript.RequestSpin();
         }
     }
+
+    public void OnPointerClick (PointerEventData eventData)
+    {
+       spinScript.RequestSpin();
+    }
+    
 }

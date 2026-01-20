@@ -2591,6 +2591,7 @@ MonoBehaviour:
   - {fileID: 1825330246}
   - {fileID: 2026878961}
   winObject: {fileID: 2554513838043605647, guid: 91f94d3bafe8cdb469d071d135bb961e, type: 3}
+  frozen: 0
   spinSpeed: 150
 --- !u!135 &1418203296
 SphereCollider:
@@ -2625,6 +2626,7 @@ GameObject:
   - component: {fileID: 1479446704}
   - component: {fileID: 1479446703}
   - component: {fileID: 1479446702}
+  - component: {fileID: 1479446705}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2666,7 +2668,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1479446703
 MeshRenderer:
@@ -2721,6 +2723,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479446700}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1479446705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479446700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e725e9e2e132fc4c9306a224e75519f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1481392123
 GameObject:
   m_ObjectHideFlags: 0
