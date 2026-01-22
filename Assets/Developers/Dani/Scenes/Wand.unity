@@ -2739,10 +2739,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2185125541803007530, guid: 6f6230b72a643ab489446493dafd1020, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: -2212942334000649098, guid: 2873e1c7072e66144ba7a79bc57bd279, type: 3}
     - target: {fileID: 5036331114670009997, guid: 6f6230b72a643ab489446493dafd1020, type: 3}
       propertyPath: m_Name
       value: Wand
@@ -2759,10 +2755,6 @@ PrefabInstance:
       propertyPath: 'wandProjectiles.Array.data[2]'
       value: 
       objectReference: {fileID: 1827073313}
-    - target: {fileID: 8257416923932111840, guid: 6f6230b72a643ab489446493dafd1020, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -6660807474066780618, guid: 2873e1c7072e66144ba7a79bc57bd279, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
