@@ -5,12 +5,14 @@ public class WandTelekinesis : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private float pullStrength = 10f;
+    [Tooltip("1 is none, 0 is all velocity lost")][Range(1, 0)][SerializeField] private float velocityLossOnAttract = 0.5f;
 
     public List<Rigidbody> telekinesisObjects = new List<Rigidbody>();
 
     private void AttractObject(Rigidbody rb)
     {
         rb.useGravity = false;
+        rb.linearVelocity = rb.linearVelocity * velocityLossOnAttract;
         telekinesisObjects.Add(rb);
     }
 
@@ -25,7 +27,6 @@ public class WandTelekinesis : MonoBehaviour
         foreach (Rigidbody rb in telekinesisObjects)
         {
             Vector3 directionToWand = (transform.position - rb.position);
-            float distance = directionToWand.magnitude;
             Vector3 force = directionToWand.normalized * pullStrength;
             rb.AddForce(force, ForceMode.Acceleration);
         }
