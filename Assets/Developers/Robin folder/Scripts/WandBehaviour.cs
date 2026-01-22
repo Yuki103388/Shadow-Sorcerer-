@@ -10,6 +10,7 @@ public class WandBehaviour : MonoBehaviour
     [SerializeField] private WandProjectile[] wandProjectiles;
     [SerializeField] Transform wandEndTrans;
     [SerializeField] Transform gemSlot;
+    [SerializeField] GameObject telekinesisWandObject;
     public static WandBehaviour instance;
     private Crystal crystal;
 
@@ -69,7 +70,9 @@ public class WandBehaviour : MonoBehaviour
         canCast = true;
     }
 
-    public void ElementWandResponse(InputAction.CallbackContext context)
+    #region Primary Action
+
+    public void ElementWandPrimaryResponse(InputAction.CallbackContext context)
     {
         if (context.performed && crystal != null && latestHighestVelocity >= velocityRequiredToCast && canCast)
         {
@@ -144,6 +147,20 @@ public class WandBehaviour : MonoBehaviour
             crystal.gameObject.transform.parent = null;
             crystal.GetComponent<Rigidbody>().isKinematic = false;
             crystal = null;
+        }
+    }
+
+    #endregion
+
+    public void SecondaryElementWandResponse(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            telekinesisWandObject.SetActive(true);
+        }
+        else if (context.canceled)
+        {
+            telekinesisWandObject.SetActive(false);
         }
     }
 }
