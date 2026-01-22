@@ -1,5 +1,7 @@
-using System.ComponentModel;
+using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PuzzleSlot : MonoBehaviour
 {
@@ -25,13 +27,13 @@ public class PuzzleSlot : MonoBehaviour
 
     private void CollectPiece(PuzzlePiece piece)
     {
-        piece.transform.position = placedPosition + transform.position; //Replace with transition later
-        piece.transform.rotation = placedRotation; //Replace with transition later
-        piece.SetKinematic(true);
-        SlotPuzzle slotPuzzle = GetComponentInParent<SlotPuzzle>();
-        if (slotPuzzle != null)
-        {
-            slotPuzzle.PiecesCollected();
-        }
+        Transform pieceTransform = piece.transform;
+        pieceTransform.SetParent(transform);
+        piece.PiecePlaced(this, placedPosition + transform.position, transform.rotation);
+    }
+
+    public void UpdateSlotPuzzle()
+    {
+        slotPuzzle.PiecesCollected();
     }
 }
