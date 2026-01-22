@@ -10,20 +10,21 @@ public class WandBehaviour : MonoBehaviour
     [SerializeField] private WandProjectile[] wandProjectiles;
     [SerializeField] Transform wandEndTrans;
     [SerializeField] Transform gemSlot;
-    // [SerializeField] LayerMask electricityLayer;
     public static WandBehaviour instance;
     private Crystal crystal;
 
     [Header("Settings")]
     [SerializeField] private float velocityRequiredToCast;
     [SerializeField] private float velocityWindow = 0.2f;
+    [SerializeField] private float castCooldown = 0.5f;
     [SerializeField] private float lineRendererDuration = 0.5f;
     private float latestHighestVelocity;
     private Vector3 lastPos;
-    private Coroutine resetVelocityCoroutine;
-    private Coroutine lineRendererCoroutine;
+    private bool canCast = true;
     private int projectileIndex;
     private RaycastHit hit;
+    private Coroutine resetVelocityCoroutine;
+    private Coroutine lineRendererCoroutine;
 
     private void Awake()
     {
@@ -61,12 +62,18 @@ public class WandBehaviour : MonoBehaviour
         latestHighestVelocity = 0f;
     }
 
+    private IEnumerator CastCooldownTimer()
+    {
+        canCast = false;
+        yield return new WaitForSeconds(castCooldown);
+        canCast = true;
+    }
 
     public void ElementWandResponse(InputAction.CallbackContext context)
     {
-        if (context.performed && crystal != null && latestHighestVelocity >= velocityRequiredToCast)
+        if (context.performed && crystal != null && latestHighestVelocity >= velocityRequiredToCast && canCast)
         {
-            latestHighestVelocity = 0f; //reset to avoid multiple casts
+            StartCoroutine(CastCooldownTimer());
             if (crystal.isProjectile)
             {
                 FireProjectile();
@@ -114,6 +121,7 @@ public class WandBehaviour : MonoBehaviour
         {
             other.gameObject.transform.parent = gemSlot;
             other.transform.position = gemSlot.position;
+            other.transform.eulerAngles = new Vector3(90, 0, 0);
             other.GetComponent<Rigidbody>().isKinematic = true;
             crystal = other.GetComponent<Crystal>();
             if (!crystal.isProjectile)

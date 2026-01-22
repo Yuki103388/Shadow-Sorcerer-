@@ -5,7 +5,8 @@ public enum ElementType
     None,
     Electric,
     Fire,
-    Ice
+    Ice,
+    Duplicate
 }
 
 public class Crystal : Interactable
@@ -21,5 +22,4 @@ public class Crystal : Interactable
     [ShowIf("isProjectile", false)] public float explosionRadius = 5f;
     [ShowIf("isProjectile", false)] public float explosionForce = 5f;
     private bool isSlotted;
-    //vfx and sfx added here
 }

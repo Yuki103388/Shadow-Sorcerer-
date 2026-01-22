@@ -7,6 +7,11 @@ public class SettingsManager : MonoBehaviour
 {
     public static SettingsManager Instance;
 
+    // --- Keys (opslag) ---
+    private const string KEY_TUNNELING = "TunnelingEnabled";
+    private const string KEY_MOVE_SPEED = "MoveSpeed"; // bv. 30
+
+    // --- State ---
     public bool TunnelingEnabled = true;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -25,12 +30,17 @@ public class SettingsManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        SceneManager.sceneLoaded += (_, __) => ApplyTunneling();
+        // laad opgeslagen settings
+        TunnelingEnabled = PlayerPrefs.GetInt(KEY_TUNNELING, 1) == 1;
+
+        SceneManager.sceneLoaded += (_, __) => ApplyAll();
     }
 
+    // TUNNELING 
     public void SetTunneling(bool enabled)
     {
         TunnelingEnabled = enabled;
+        PlayerPrefs.SetInt(KEY_TUNNELING, enabled ? 1 : 0);
         ApplyTunneling();
     }
 
@@ -44,5 +54,34 @@ public class SettingsManager : MonoBehaviour
 
         var loco = go.GetComponent<LocomotionTunneling>();
         if (loco) loco.enabled = TunnelingEnabled;
+    }
+
+    // MOVE SPEED (nieuw)    
+    public float GetMoveSpeed(float defaultValue = 30f)
+    {
+        return PlayerPrefs.GetFloat(KEY_MOVE_SPEED, defaultValue);
+    }
+
+    public void SetMoveSpeed(float speed)
+    {
+        PlayerPrefs.SetFloat(KEY_MOVE_SPEED, speed);
+        ApplyMoveSpeed();
+    }
+
+    void ApplyMoveSpeed()
+    {
+        // Deze component zit op jouw PlayerController object (FirstPersonLocomotor)
+        var fp = FindAnyObjectByType<FirstPersonLocomotor>();
+        if (fp != null)
+        {
+            fp.SpeedFactor = GetMoveSpeed(30f);
+        }
+    }
+
+    // APPLY ALL bij scene load    
+    void ApplyAll()
+    {
+        ApplyTunneling();
+        ApplyMoveSpeed();
     }
 }

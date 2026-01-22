@@ -15,7 +15,7 @@ public class Duplicatable : MonoBehaviour
     public UnityEvent onDuplicate;
 
     [ContextMenu("Duplicate")]
-    private void Duplicate()
+    public void Duplicate()
     {
         if (originalObject == null)
         {
