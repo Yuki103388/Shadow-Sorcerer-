@@ -61,7 +61,7 @@ public class DicePuzzle : MonoBehaviour
             counterText.text = diceCount.ToString() + " / 11";
         }
 
-        if (diceCount == 12 && !puzzleComplete)
+        if (diceCount >= 11 && !puzzleComplete)
         {
             puzzleComplete = true;
             Debug.Log("Puzzle Complete!");
