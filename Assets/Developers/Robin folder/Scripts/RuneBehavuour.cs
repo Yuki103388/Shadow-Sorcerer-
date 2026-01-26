@@ -21,7 +21,7 @@ public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     { 
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Left && !_simonSays.isRunning)
         {
             OnRuneSelectedBehaviour();
         }   
@@ -29,7 +29,7 @@ public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
 
     private void OnRuneSelectedBehaviour()
     {
-        // checks if the selected rune is the next one in the sequence and updates the index to be the one after in the sequence, if thats not the case reset all the runes
+        // checks if the selected rune is the next one in the sequence and updates the index to be the one after in the sequence, if thats not the case reset all the runes 
         if (_simonSays.selectedRunes[_simonSayIndex] == _runeBehaviour && !_simonSays.gameOver)
         {
             for (int i = 0; i < _simonSays.selectedRunes.Count; i++)
@@ -47,11 +47,11 @@ public class RuneBehavuour : MonoBehaviour, IPointerDownHandler
 
     public void Selected()
     {
-        _renderer.material.color = Color.white;
+        _renderer.material.color = Color.green;
     }
     public void Deselect()
     {
-        _renderer.material.color = Color.green;
+        _renderer.material.color = Color.white;
     }
 
     private void OnTriggerEnter(Collider other)

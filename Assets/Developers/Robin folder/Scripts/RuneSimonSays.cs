@@ -15,6 +15,7 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 
     [Header("variables")]
     public bool gameOver = false;
+    public bool isRunning = false;
     private bool sequence = false;
 
     [Header("Components")]
@@ -27,13 +28,16 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    // Starts the game, it selects 3 runes from the list and adds them to the current sequence. Then checks if you press it ín the correct order
     public IEnumerator SimonSaysBehaviour()
     {
-        while (!gameOver && selectedRunes.Count <= _runes.Count )
+        // checks if you are on the first pattern, if yes it does not turn the previous runes on because there are none. Otherwise makes the previous pattern and runes turn on for a second.
+        while (!gameOver && selectedRunes.Count < _runes.Count )
         {
             WaitForSeconds wait = new WaitForSeconds(1);
             if (selectedRunes.Count >= 3)
             {
+                isRunning = true;
                 for (int i = 0; i < selectedRunes.Count; i++)
                 {
                     selectedRunes[i].Selected();
@@ -45,9 +49,10 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
             {
                 yield return null;
             }
-
+            // chooses a random rune if that rune has already been excluded choose a different one, then adds it to the selected runes and excludes it from being picked again.
             for (int i = 0; i < 3;)
             {
+               isRunning = true;
                int randomRune = Random.Range(0, _runes.Count);
                if (excludedElements.Contains(randomRune))
                {
@@ -63,8 +68,10 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
                    i++;
                }
             }
+            // The courotine waits until all chosen runes have been selected by the player
             yield return new WaitUntil(() =>
             {
+                isRunning = false;
                 for (int i = 0; i < selectedRunes.Count; i++)
                 {
                     if (!selectedRunes[i].selected)
@@ -82,6 +89,16 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
                 _renderer.material.color = Color.blue;
             }
         }
+        Winbehaviour();
+    }
+    // Sets the game state on gameover,stops the current sequence and makes the start button flash red, then puts it back to normal.
+
+    private void Winbehaviour()
+    {
+        //add win behaviour like spawing a key or rune
+
+
+        StopAllCoroutines();
     }
     public IEnumerator GameOver()
     {
@@ -90,9 +107,11 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
         selectedRunes.Clear();
         _renderer.material.color = Color.red;
         yield return new WaitForSeconds(2);
-        _renderer.material.color = Color.gray;
+        _renderer.material.color = Color.white;
         sequence = false;
+        isRunning = false;
     }
+    // removes all the selected runes and resets the index variable
     public void ResetRune()
     {
         for (int j = 0; j < selectedRunes.Count; j++)
@@ -102,6 +121,7 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
             selectedRunes[j]._simonSayIndex = 0;
         }
     }
+    // checks if the game is already running, if not reset all state variables and start the game courotine
     private void StartSimonSays()
     {
         if (!sequence)
@@ -113,6 +133,7 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
             sequence = true;
         }
     }
+    // CHecks for the mouse interactions
    public void OnPointerDown(PointerEventData eventData)
     {
         if(eventData.button == PointerEventData.InputButton.Left)
@@ -120,7 +141,7 @@ public class RuneSimonSays : MonoBehaviour,IPointerDownHandler
             StartSimonSays();
         }
     }
-
+    // checks for the VR interactions
     private void OnTriggerEnter(Collider other)
     {
         switch(other.tag) {
