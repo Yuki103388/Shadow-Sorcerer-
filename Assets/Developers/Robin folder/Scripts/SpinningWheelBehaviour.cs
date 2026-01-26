@@ -4,38 +4,38 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class SpinningWheelBehaviour : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Transform _conditionCheckTrans;
+    [SerializeField] Transform winObjTrans;
     [SerializeField] LayerMask _conditionLayer;
     [SerializeField] List<WheelElement> _wheelElements;
+    [SerializeField] GameObject winObject;
+    private SpinningWheelBehaviour script;
+
     [Header("Variables")]
-    private bool frozen = false;
+    public bool frozen = false;
+    private bool canSpin = false;
     public float spinSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        script = GetComponent<SpinningWheelBehaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
-    }
-
-    public void SpinWheel(InputAction.CallbackContext context)
-    {
-        if (context.performed && !frozen)
-        {
-            StartCoroutine(SpinWheelTest());
-        }
+        SpinWheel();
     }
 
     public void FreezeWheel()
     {
-        spinSpeed = 0;
         frozen = true;
+        CheckCondition();
     }
 
     public void UnfreezeWheel()
@@ -54,7 +54,7 @@ public class SpinningWheelBehaviour : MonoBehaviour
                 switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
                 {
                     case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
-                    case ElementWheel.win: spinSpeed = 35f; StartCoroutine(SpinWheelTest()); break;
+                    case ElementWheel.win: spinSpeed = 35f; RequestSpin(); break;
                 }
             }
             else if(frozen)
@@ -62,24 +62,29 @@ public class SpinningWheelBehaviour : MonoBehaviour
                 switch (hit.transform.parent.GetComponent<WheelElement>().wheelElement)
                 {
                     case ElementWheel.lose: Debug.Log("play a sfx or something loser"); break;
-                    case ElementWheel.win: Debug.Log("win"); break;
+                    case ElementWheel.win: Debug.Log("win");Instantiate(winObject,winObjTrans);script.enabled = false; break;
                 }
             } 
         }
     }
 
-    private IEnumerator SpinWheelTest()
+    public void RequestSpin()
     {
-        while(true) {
+        if (canSpin) return;
+            spinSpeed = 150f;
+            canSpin = true;
+    }
+
+    private void SpinWheel()
+    {
+        if(!frozen && canSpin) {
             transform.Rotate(0, 0, -spinSpeed);
-            spinSpeed = .99f * spinSpeed; 
-            if(spinSpeed <= .05f)
+            spinSpeed *= .99f;
+            if(spinSpeed <= .1f)
             {
                 CheckCondition();
-                spinSpeed = 150;
-                StopAllCoroutines();
+                canSpin = false;
             }
-            yield return null;
         }
     }
 }
