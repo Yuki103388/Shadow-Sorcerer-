@@ -28,13 +28,16 @@ public class PuzzlePiece : MonoBehaviour
     private IEnumerator PositionTransition(Vector3 position, Quaternion rotation)
     {
         Vector3 startingPos = transform.position;
+        Quaternion startingRot = transform.rotation;
         float elapsed = 0f;
 
         while (elapsed < transitionDuration)
         {
-            transform.position = Vector3.Lerp(startingPos, position, elapsed / transitionDuration);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, elapsed / transitionDuration);
             elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / transitionDuration);
+            transform.position = Vector3.Lerp(startingPos, position, t);
+            transform.rotation = Quaternion.Slerp(startingRot, rotation, t);
+
             yield return null;
         }
 
