@@ -95,6 +95,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116905027541225500}
+  - component: {fileID: 2545817096191227864}
+  - component: {fileID: 7212428486579536579}
   m_Layer: 0
   m_Name: pref simon
   m_TagString: Untagged
@@ -119,6 +121,48 @@ Transform:
   - {fileID: 5506133265342323114}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2545817096191227864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583047851832414282}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.4820614, y: 0.14946046, z: 4.532168}
+  m_Center: {x: 0.9665803, y: 0.058977995, z: 0.13469093}
+--- !u!65 &7212428486579536579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583047851832414282}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3805234, y: 0.09082107, z: 0.27568632}
+  m_Center: {x: 0.95199203, y: 0.038680885, z: 2.5233755}
 --- !u!1 &632955690947819984
 GameObject:
   m_ObjectHideFlags: 0
