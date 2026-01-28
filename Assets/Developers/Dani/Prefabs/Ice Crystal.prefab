@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5078201693656469707}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.005, y: 0, z: 0}
+  m_LocalPosition: {x: 0.025, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,8 +44,8 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0, g: 0.18397427, b: 1, a: 1}
-  m_Intensity: 0.01
-  m_Range: 0.83
+  m_Intensity: 0.025
+  m_Range: 0.075
   m_SpotAngle: 53.096764
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 5958275548481457755}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -165,8 +165,8 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0, g: 0.18397427, b: 1, a: 1}
-  m_Intensity: 0.01
-  m_Range: 0.83
+  m_Intensity: 0.025
+  m_Range: 0.075
   m_SpotAngle: 53.096764
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VFX: {fileID: 0}
   projectilePrefab: {fileID: 3863098107337640894, guid: e9e8b1a1c0074dd4285472c5bb1129fd, type: 3}
-  lineRendererMaterial: {fileID: 0}
+  lineRendererMaterial: {fileID: 2100000, guid: bb5721ca136978247baaea26bd908a10, type: 2}
   elementType: 3
   isProjectile: 0
   projectileSpeed: 10
@@ -333,8 +333,8 @@ Rigidbody:
   m_GameObject: {fileID: 6337744551013687536}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 5
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -347,10 +347,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &2769099958190174948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +521,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5671789682736569823}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 680501e3acfb5ca40a2561727beac198, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 680501e3acfb5ca40a2561727beac198, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 680501e3acfb5ca40a2561727beac198, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 680501e3acfb5ca40a2561727beac198, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0

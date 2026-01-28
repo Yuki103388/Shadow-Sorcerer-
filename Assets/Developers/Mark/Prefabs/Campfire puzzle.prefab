@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 953831626103545752}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2164396, y: -0, z: -0, w: 0.97629607}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0.22187458}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6746,7 +6746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5564794026349203200}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.42261827, z: 0, w: 0.9063079}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
@@ -6782,7 +6782,7 @@ Transform:
   - {fileID: 2062875363550404612}
   - {fileID: 1576290012651568352}
   m_Father: {fileID: 1321665884802180762}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -50, z: 0}
 --- !u!1 &6071504837857467623
 GameObject:
   m_ObjectHideFlags: 0
@@ -7472,8 +7472,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1321665884802180762}
-  - component: {fileID: 8709149027558447568}
   - component: {fileID: 7887604840347470797}
+  - component: {fileID: 611045778533279426}
   m_Layer: 0
   m_Name: Campfire puzzle
   m_TagString: Untagged
@@ -7491,7 +7491,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3052542561899997100}
@@ -7500,27 +7500,6 @@ Transform:
   - {fileID: 8091986352863249344}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &8709149027558447568
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6651928924730542989}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7887604840347470797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7574,6 +7553,27 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   grabbable: {fileID: 0}
+--- !u!65 &611045778533279426
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651928924730542989}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.26, y: 0.09, z: 0.3}
+  m_Center: {x: 0, y: -0.05, z: 0}
 --- !u!1 &6710558656502394120
 GameObject:
   m_ObjectHideFlags: 0

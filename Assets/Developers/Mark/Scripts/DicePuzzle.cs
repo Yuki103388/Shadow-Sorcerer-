@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.Events;
 
 public class DicePuzzle : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class DicePuzzle : MonoBehaviour
     private GameObject[] diceArray;
     private Rigidbody[] diceRigidbodies;
     [SerializeField] private TextMeshPro counterText;
+    public UnityEvent OnPuzzleComplete;
 
     [Header("Settings")]
     private int diceCount;
@@ -65,7 +67,7 @@ public class DicePuzzle : MonoBehaviour
         {
             puzzleComplete = true;
             Debug.Log("Puzzle Complete!");
-            // Additional puzzle completion logic here
+            OnPuzzleComplete.Invoke();
         }
     }
 
